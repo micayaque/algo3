@@ -1,1 +1,1 @@
-### Algoritmos y estructuras de datos III / Técnicas de Diseño de Algoritmos
+### Ejercicios resueltos de la materia Algoritmos y estructuras de datos III
