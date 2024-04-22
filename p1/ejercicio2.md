@@ -117,6 +117,8 @@ def magiCuadrados(n):
     return backtracking([[0]*n for _ in range(n)], 0, 0)
 ```
 
+---
+
 *e) Demostrar que el número mágico de un cuadrado mágico de orden n es siempre ($n^3 +
 n) \div 2$. Adaptar la poda del algoritmo del ítem anterior para que tenga en cuenta esta nueva
 información. Modificar la implementación y comparar los tiempos obtenidos para calcular
