@@ -2,7 +2,7 @@
 
 ### *SumaSubconjuntosBT*
 
-1. *En este ejercicio vamos a resolver el problema de suma de subconjuntos con la técnica de backtracking. Dado un multiconjunto C = {$c_1$ , . . . , $c_n$ } de números naturales y un natural k, queremos determinar si existe un subconjunto de C cuya sumatoria sea k. Vamos a suponer fuertemente que C está ordenado de alguna forma arbitraria pero conocida (i.e., C está implementado como
+*En este ejercicio vamos a resolver el problema de suma de subconjuntos con la técnica de backtracking. Dado un multiconjunto C = {$c_1$ , . . . , $c_n$ } de números naturales y un natural k, queremos determinar si existe un subconjunto de C cuya sumatoria sea k. Vamos a suponer fuertemente que C está ordenado de alguna forma arbitraria pero conocida (i.e., C está implementado como
 la secuencia $c_1$ , . . . , $c_n$ o, análogamente, tenemos un iterador de C). Las soluciones (candidatas) son los vectores a = ($a_1$ , . . . , $a_n$ ) de valores binarios; el subconjunto P de C representado por a contiene a $c_i$ si y sólo si $a_i$ = 1. Luego, a es una solución válida cuando $\sum_{i=1}^{n} a_i c_i = k$. Asimismo,
 una solución parcial es un vector p = (a1 , . . . , ai ) de números binarios con 0 ≤ i ≤ n. Si i < n,
 las soluciones sucesoras de p son p ⊕ 0 y p ⊕ 1, donde ⊕ indica la concatenación.*
