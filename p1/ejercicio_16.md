@@ -1,3 +1,6 @@
+<font face="LaTeX">
+
+
 ## RutaEficiente
 
 Tomás quiere viajar de Buenos Aires a Mar del Plata en su flamante Renault 12. Como está
@@ -52,3 +55,5 @@ $ o_{k+1} − g_k ≤ o_{k+1} − o_k ≤ C $
 Si unimos las dos cosas anteriores conseguimos $ o_{k+1} − g_k ≤ C $
 Por lo cual $ g_{k+1} $ se puede mover al menos hasta $ o_{k+1} $ que es lo que queríamos probar.
 
+
+</font>
