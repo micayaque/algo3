@@ -1,3 +1,5 @@
+<font face="LaTeX">
+
 ## Suma Golosa
 
 Queremos encontrar la suma de los elementos de un multiconjunto de números naturales. Cada suma se realiza exactamente entre dos números $ x $ e $ y $ y tiene costo $ x + y $.\
@@ -37,3 +39,5 @@ conocemos tiene complejidad O(n log n) y utiliza una estructura de datos que imp
 una secuencia ordenada.
 
 **HeapSort** 
+
+</font>
