@@ -2,7 +2,7 @@
 
 ### <u>MaxMex</u>
 
---
+---
 
 *Se define la función $mex : P(N) → N$ como:\
 $mex(X) = mı́n \{ j : j ∈ N ∧ j \notin X\}$*\
