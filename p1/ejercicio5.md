@@ -10,7 +10,7 @@ programación dinámica.*
 a) *Sea $n = |C|$ la cantidad de elementos de $C$. Considerar la siguiente función recursiva
 $ss’_C(i,j) : \{0,...,n\} × \{0,...,k\} → \{V, F\}$ (donde V indica verdadero y F falso) tal que:*
 
-$$ ss'_C(i,j) =  \begin{cases} j==0 & \text{si } i = 0 \\ ss'_C(i-1,j) & \text{si si i $\neq$ 0 ∧ C[i] > j} \\ ss’C (i−1, j) ∨ ss’C (i−1, j−C[i]) & \text{sino} \end{cases}$$
+$$ss'_C(i,j) =  \begin{cases} j==0 & \text{si } i = 0 \\ ss'_C(i-1,j) & \text{si si i $\neq$ 0 ∧ C[i] > j} \\ ss’C (i−1, j) ∨ ss’C (i−1, j−C[i]) & \text{sino} \end{cases}$$
 
 ---
 
