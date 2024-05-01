@@ -2,19 +2,19 @@
 
 ## OperacionesSeq
 
-*Sea $ v = (v_1 , v_2 , . . . v_n ) $ un vector de números naturales, y sea $ w ∈ N $. Se desea <u>intercalar</u> entre los elementos de $ v $ las operaciones $ + $ (suma), $ × $ (multiplicación) y $ ↑ $ (potenciación) de tal manera que al evaluar la expresión obtenida el resultado sea $ w $. Para evaluar la expresión se opera de **izquierda a derecha** ignorando la precedencia de los operadores. Por ejemplo, si $ v = (3, 1, 5, 2, 1) $, y las operaciones elegidas son $ + $, $ × $, $ ↑ $ y $ × $ (en ese orden), la expresión obtenida es $ 3+1×5 ↑ 2×1 $,
-que se evalúa como $ (((3 + 1) × 5) ↑ 2) × 1 = 400 $.*
+*Sea $v = (v_1 , v_2 , . . . v_n ) $ un vector de números naturales, y sea $w ∈ N $. Se desea <u>intercalar</u> entre los elementos de $v $ las operaciones $+ $ (suma), $× $ (multiplicación) y $↑ $ (potenciación) de tal manera que al evaluar la expresión obtenida el resultado sea $w $. Para evaluar la expresión se opera de **izquierda a derecha** ignorando la precedencia de los operadores. Por ejemplo, si $v = (3, 1, 5, 2, 1) $, y las operaciones elegidas son $+ $, $× $, $↑ $ y $× $ (en ese orden), la expresión obtenida es $3+1×5 ↑ 2×1 $,
+que se evalúa como $(((3 + 1) × 5) ↑ 2) × 1 = 400 $.*
 
 ---
-*a) Escribir una formulación recursiva que sea la base de un algoritmo de PD que, dados $ v $ y $ w $, encuentre una secuencia de operaciones como la deseada, en caso de que tal secuencia exista. Explicar su semántica e indicar cuáles serían los parámetros para resolver el problema.*
+*a) Escribir una formulación recursiva que sea la base de un algoritmo de PD que, dados $v $ y $w $, encuentre una secuencia de operaciones como la deseada, en caso de que tal secuencia exista. Explicar su semántica e indicar cuáles serían los parámetros para resolver el problema.*
 
-$$ opSeq(\{v_1,...,v_n\}, i, w, r, s) =  \begin{cases} w=r & \text{si } i = n \\ False & \text{si } r > w \\  opSeq(\{v_1, . . . , v_n\}, i+1, w, r + v[i], s++(+)) ∨ \\ opSeq(\{v_1 , . . . , v_n \}, i+1, w, r * v[i], s++(×)) \lor \\ opSeq(\{v_1 , . . . , v_n \}, i+1, w, r↑v[i], s++(↑))  & \text{sino } \end{cases}$$
+$$opSeq(\{v_1,...,v_n\}, i, w, r, s) =  \begin{cases} w=r & \text{si } i = n \\ False & \text{si } r > w \\  opSeq(\{v_1, . . . , v_n\}, i+1, w, r + v[i], s++(+)) ∨ \\ opSeq(\{v_1 , . . . , v_n \}, i+1, w, r * v[i], s++(×)) \lor \\ opSeq(\{v_1 , . . . , v_n \}, i+1, w, r↑v[i], s++(↑))  & \text{sino } \end{cases}$$
 
 La función recursiva toma como parámetros el índice (i) actual en el vector (v), el resultado acumulado hasta el momento (r), y el objetivo (w). La idea es llamar a esta función comenzando desde el índice 0 y con un resultado acumulado inicial el primer valor de (v).
 
 Si llegamos al final del vector (v) (es decir, el índice actual es igual a la longitud de (v), i == n) y el resultado acumulado es igual a (w), entonces encontramos una secuencia de operaciones válida y retornamos true. Si el resultado acumulado no es (w), retornamos false.
 
-$ opSeq(v, 2, w, v_1, s) $
+$opSeq(v, 2, w, v_1, s) $
 
 ---
 *b) Diseñar un algoritmo basado en PD con la formulación de a) y dar su complejidad temporal y espacial auxiliar. Comparar cómo resultaría un enfoque top-down con uno bottom-up.*
