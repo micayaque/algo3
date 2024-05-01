@@ -1,7 +1,7 @@
 <font face="LaTeX">
 
 ### AstroTrade
-***Astro Void** se dedica a la compra de asteroides. Sea $ p ∈ N^n $ tal que $ p_i $ es el precio de un asteroide
+***Astro Void** se dedica a la compra de asteroides. Sea $p ∈ N^n $ tal que $ p_i $ es el precio de un asteroide
 el i-ésimo día en una secuencia de n días. Astro Void quiere comprar y vender asteroides durante esos n días de manera tal de obtener la **mayor ganancia** neta posible. Debido a las dificultades que existen en el transporte y almacenamiento de asteroides, Astro Void puede comprar a lo sumo **un asteroide cada día**, puede vender a lo sumo un asteroide cada día y comienza sin asteroides. Además, el Ente Regulador Asteroidal impide que Astro Void venda un asteroide que no haya comprado. Queremos encontrar la máxima ganancia neta que puede obtener Astro Void respetando las restricciones indicadas. Por ejemplo, si p = (3, 2, 5, 6) el resultado es 6 y si p = (3, 6, 10) el resultado es 7. Notar que **en una solución óptima, Astro Void debe terminar sin
 asteroides**.*
 
@@ -21,22 +21,22 @@ asteroides**.*
 
 <u>Formulación recursiva:</u>
 
-$$ mgn(j, c) = \begin{cases} 0 & \text{si } j=0 \ \text{o} \ c = 0\\ -\infty & \text{si } j=0 \ \text{y} \ c \gt 0\\ 
+$$mgn(j, c) = \begin{cases} 0 & \text{si } j=0 \ \text{o} \ c = 0\\ -\infty & \text{si } j=0 \ \text{y} \ c \gt 0\\ 
       -\infty & \text{si } c < 0 \text{ o } c > j \\ 
       \max \{ mgn(j-1, c-1) - p_j, mgn(j-1, c+1) + p_j, mgn(j-1, c) \} & \text{en otro caso}
-   \end{cases} $$
+   \end{cases}$$
 
 ---
 
 Los valores de los casos base en función de la restricción de que comienza sin asteroides son:
 
-$$ mgn(0, c) = \begin{cases} 0 & \text{si } c = 0 \\ -\infty & \text{si } c \gt 0 \end{cases} $$
+$$mgn(0, c) = \begin{cases} 0 & \text{si } c = 0 \\ -\infty & \text{si } c \gt 0 \end{cases} $$
 
 ---
 
 *c) Indicar qué dato es la respuesta al problema con esa formulación recursiva.*
 
-La respuesta al problema es $ mgn(n, 0) $, donde $ n $ es la cantidad de días.
+La respuesta al problema es $mgn(n, 0) $, donde $n $ es la cantidad de días.
 
 ---
 
@@ -64,6 +64,6 @@ def mgn(p):
     return mgn_rec(n, 0)
 ```
 
-La complejidad temporal del algoritmo es $ O(n^2) $ y la complejidad espacial auxiliar es $ O(n^2) $.
+La complejidad temporal del algoritmo es $O(n^2) $ y la complejidad espacial auxiliar es $O(n^2) $.
 
 </font>
