@@ -20,9 +20,9 @@ segundo en una de 8 metros y el último en una de 6 metros.*
 
 <u>Formulación recursiva:</u>
 
-$$ minCosto(i, j, C) = j - i + \min_{c \in C} \{ minCosto(i, c, C) + minCosto(c, j, C) \} $$
+$$minCosto(i, j, C) = j - i + \min_{c \in C} \{ minCosto(i, c, C) + minCosto(c, j, C) \} $$
 
-La función $ minCost(i, j, C) $ devuelve el mínimo costo de cortar una vara que abarca desde i hasta j con el conjunto C de lugares de corte. Los parámetros para resolver el problema son $ i $, $ j $ y $ C $.
+La función $minCost(i, j, C) $ devuelve el mínimo costo de cortar una vara que abarca desde i hasta j con el conjunto C de lugares de corte. Los parámetros para resolver el problema son $i $, $j $ y $C $.
 
 ---
 
@@ -51,7 +51,7 @@ def calcularMinCosto(l, C):
     return minCosto(0, l, C, memo)
 ```
 
-La complejidad temporal de algoritmo es $ O( |C| \cdot l^2) $ y la complejidad espacial auxiliar es $ O(l^2) $.
+La complejidad temporal de algoritmo es $O( |C| \cdot l^2) $ y la complejidad espacial auxiliar es $O(l^2) $.
 
 ---
 
@@ -62,9 +62,9 @@ La complejidad temporal de algoritmo es $ O( |C| \cdot l^2) $ y la complejidad e
 
 I)
 
-$$ minCosto(i, j) = cortes[j] - cortes[i] + \min_{c \in [i+1, j-1]} \{ minCosto(i, c) + minCosto(c, j) \} $$
+$$minCosto(i, j) = cortes[j] - cortes[i] + \min_{c \in [i+1, j-1]} \{ minCosto(i, c) + minCosto(c, j) \} $$
 
-La función $ minCosto(i, j) $ devuelve el mínimo costo para cortar desde el i-ésimo punto de corte en cortes hasta el j-ésimo punto de corte. Los parámetros para resolver el problema son $ i $ y $ j $.
+La función $minCosto(i, j) $ devuelve el mínimo costo para cortar desde el i-ésimo punto de corte en cortes hasta el j-ésimo punto de corte. Los parámetros para resolver el problema son $i $ y $j $.
 
 II)
 
