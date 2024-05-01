@@ -79,8 +79,8 @@ def pila(s,w):
     memo = [0]*n
     pila_cauta(0, s, w, memo)
 ```
-La complejidad temporal del algoritmo es $ O(n*n) $ con n la cantidad de cajas.
-La complejidad espacial es $ O(n) $ 
+La complejidad temporal del algoritmo es $O(n*n) $ con n la cantidad de cajas.
+La complejidad espacial es $O(n) $ 
 
 ---
 
