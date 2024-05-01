@@ -2,7 +2,7 @@
 
 ## Suma Golosa
 
-Queremos encontrar la suma de los elementos de un multiconjunto de números naturales. Cada suma se realiza exactamente entre dos números $ x $ e $ y $ y tiene costo $ x + y $.\
+Queremos encontrar la suma de los elementos de un multiconjunto de números naturales. Cada suma se realiza exactamente entre dos números $x $ e $y $ y tiene costo $x + y $.\
 Queremos encontrar la forma de sumarlos que tenga costo mínimo.
 
 ---
