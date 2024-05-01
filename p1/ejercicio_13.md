@@ -35,7 +35,7 @@ La complejidad temporal del algoritmo es O(n + m) donde n y m son la cantidad de
 
 <u>**Hipótesis inductiva:** </u>
 
-Supongamos que el algoritmo encuentra la cantidad máxima de parejas de baile óptima para los primeros $ 𝑘 $ elementos de las listas *habilidades1* y *habilidades2*. $ 𝑃(𝑘) $
+Supongamos que el algoritmo encuentra la cantidad máxima de parejas de baile óptima para los primeros $𝑘 $ elementos de las listas *habilidades1* y *habilidades2*. $𝑃(𝑘) $
 
 <u>**Caso base:** </u>
 
@@ -45,16 +45,16 @@ Por lo tanto, el algoritmo satisface el caso base.
 
 <u>**Paso inductivo:** </u>
 
-Queremos probar que también encuentra la cantidad de parejas de baile óptima para los primeros $ 𝑘+1 $ elementos de las listas *habilidades1* y *habilidades2*. $ P(𝑘+1) $
+Queremos probar que también encuentra la cantidad de parejas de baile óptima para los primeros $𝑘+1 $ elementos de las listas *habilidades1* y *habilidades2*. $P(𝑘+1) $
 
 
-* Si el 𝑘+1-ésimo elemento de *habilidades1* es emparejado con el 𝑘+1-ésimo elemento de *habilidades2*, entonces la cantidad total de parejas será  $ 𝑃(𝑘)+1 $. Por **HI** suponemos que la cantidad óptima de parejas para los primeros 𝑘 elementos es $ P(𝑘) $, y agregamos una pareja más al emparejar estos dos elementos. Esto nos da $ 𝑃(𝑘)+1 $ parejas en total, que es la cantidad óptima de parejas para los primeros $ 𝑘+1 $ elementos.
+* Si el 𝑘+1-ésimo elemento de *habilidades1* es emparejado con el 𝑘+1-ésimo elemento de *habilidades2*, entonces la cantidad total de parejas será  $𝑃(𝑘)+1 $. Por **HI** suponemos que la cantidad óptima de parejas para los primeros 𝑘 elementos es $P(𝑘) $, y agregamos una pareja más al emparejar estos dos elementos. Esto nos da $𝑃(𝑘)+1 $ parejas en total, que es la cantidad óptima de parejas para los primeros $𝑘+1 $ elementos.
 * Si el 𝑘+1-ésimo elemento de *habilidades1* no puede ser emparejado con el 𝑘+1-ésimo elemento de *habilidades2*, entonces el algoritmo avanzará en una de las listas y no se contará una pareja adicional porque al estar las habilidades ordenadas ascendentemente no tenemos forma de crear una nueva pareja con el elemento que estamos mirando ya que a la derecha de elemento mayor solo van a haber elementos de habilidad mayor lo que solo aumentaría más aún el módulo de la diferencia de habilidades. 
 
     Esto significa que la cantidad óptima de parejas para los primeros 𝑘+1 elementos sigue siendo 𝑃(𝑘), ya que no se agregó ninguna pareja adicional. Como suponemos que el algoritmo encuentra la cantidad máxima de parejas para los primeros 𝑘 elementos, no se contará ninguna pareja más en este caso.
 
-Por lo tanto, en ambos casos, el algoritmo encontrará la cantidad máxima de parejas de baile óptima para los primeros $ 𝑘+1 $ elementos de las listas *habilidades1* y *habilidades2*.
+Por lo tanto, en ambos casos, el algoritmo encontrará la cantidad máxima de parejas de baile óptima para los primeros $𝑘+1 $ elementos de las listas *habilidades1* y *habilidades2*.
 Dado que el algoritmo comienza con la cantidad máxima de parejas de baile para los primeros elementos y avanza de manera golosa, siempre seleccionando la pareja más compatible en ese momento, el algoritmo encuentra la solución óptima.
-$ \blacksquare $
+$\blacksquare $
 
 </font>
