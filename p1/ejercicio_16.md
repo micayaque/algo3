@@ -15,45 +15,45 @@ Queremos probar que:
 
 ---
 Sea 
-* $ o_i  ∈ O $ una solución óptima con $ |O| = m $, 
-* $ g_i ∈ G $ nuestra solución
-golosa con $ |G| = n $ y además $ n > m 
+* $o_i  ∈ O $ una solución óptima con $|O| = m $, 
+* $g_i ∈ G $ nuestra solución
+golosa con $|G| = n $ y además $n > m 
 $, 
 
-entonces para $ i ∈ (1, . . . , m) $
-$ g_i ≥ o_i $
+entonces para $i ∈ (1, . . . , m) $
+$g_i ≥ o_i $
 
 Vamos a demostrar esto usando inducción.
 
 ---
 <u>Caso base:</u> `i=1`. 
 
-Tenemos $ g_1 $ y $ o_1 $, como ambas parten del mismo lugar y nuestra estrategia golosa se movió lo máximo que se podía tenemos que:
+Tenemos $g_1 $ y $o_1 $, como ambas parten del mismo lugar y nuestra estrategia golosa se movió lo máximo que se podía tenemos que:
 `o1 ≤ g1 `
 
 ---
 <u>Caso inductivo:</u> 
 
 Nuestra **<u>hipótesis inductiva</u>** es la siguiente, 
-dado $ 1 ≤ i ≤ k $ tenemos que $ o_i ≤ g_i $ , observemos que pasa con $ i = k + 1 $.
+dado $1 ≤ i ≤ k $ tenemos que $o_i ≤ g_i $ , observemos que pasa con $i = k + 1 $.
 * Por un lado tenemos
-$ o_{k+1} = o_k + D $ con $ 0 < D < C $
+$o_{k+1} = o_k + D $ con $0 < D < C $
 
-Queremos ver que $ g_{k+1} ≥ o_{k+1} $ 
+Queremos ver que $g_{k+1} ≥ o_{k+1} $ 
 
-como $ o_{k+1} − g_k ≤_{HI} o_{k+1} − o_k $
-
----
-$ o_k ≤ g_k $\
-$ -g_k \geq -o_k$\
-$ o_{k+1} − g_k ≤ o_{k+1} − o_k ≤ C $
+como $o_{k+1} − g_k ≤_{HI} o_{k+1} − o_k $
 
 ---
+$o_k ≤ g_k $\
+$-g_k \geq -o_k$\
+$o_{k+1} − g_k ≤ o_{k+1} − o_k ≤ C $
+
+---
 
 
 
-Si unimos las dos cosas anteriores conseguimos $ o_{k+1} − g_k ≤ C $
-Por lo cual $ g_{k+1} $ se puede mover al menos hasta $ o_{k+1} $ que es lo que queríamos probar.
+Si unimos las dos cosas anteriores conseguimos $o_{k+1} − g_k ≤ C $
+Por lo cual $g_{k+1} $ se puede mover al menos hasta $o_{k+1} $ que es lo que queríamos probar.
 
 
 </font>
