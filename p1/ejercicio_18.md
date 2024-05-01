@@ -2,9 +2,12 @@
 
 ### <u>MaxMex</u>
 
-*Se define la función $mex : P(N) → N $ como:\ $ mex(X) = mı́n \{ j : j ∈ N ∧ j \notin X\} $*\
+--
+
+*Se define la función $mex : P(N) → N$ como:\
+$mex(X) = mı́n \{ j : j ∈ N ∧ j \notin X\}$*\
 *Intuitivamente, mex devuelve, dado un conjunto X, el menor número natural que no está en x.\
-Por ejemplo, $mex(\{ 0, 1, 2 \}) = 3$, $mex({0, 1, 3}) = 2 $ y $mex({1, 2, 3, . . .}) = 0 $.*
+Por ejemplo, $mex(\{ 0, 1, 2 \}) = 3$, $mex({0, 1, 3}) = 2$ y $mex({1, 2, 3, . . .}) = 0$.*
 
 ---
 
@@ -15,7 +18,7 @@ que maximize $\sum_{i=1}^{n} mex(\{ b_1, . . . , b_i \}) $*
 
 *Por ejemplo, si el vector es {3, 0, 1} podemos ver que la mejor permutación es {0, 1, 3}, que alcanza un valor de: $mex({0}) + mex({0, 1}) + mex({0, 1, 3}) = 1 + 2 + 2 = 5 .$*
 
-![ejemplo](/img/ejemplo_ejercicio18.png)
+![ejemplo](./img/ejemplo_ejercicio18.png)
 
 *a) Proponer un algoritmo greedy que resuelva el problema y demostrar su correctitud.\
 <u>Ayuda</u>: ¿Cuál el máximo valor que puede tomar mex(X) si X tiene n elementos? Rta: n.\
@@ -82,7 +85,7 @@ Por lo tanto, la permutación greedy es óptima.
 
 *b) Dar una implementación del algoritmo del inciso anterior con complejidad temporal O(n).*
 
-![algoritmo_cuadratico](/img/algoritmo_ejercicio18.png)
+![algoritmo_cuadratico](./img/algoritmo_ejercicio18.png)
 
 Otra posibilidad con mejor costo:
 
