@@ -4,7 +4,7 @@
 
 ---
 
-*Se define la función $mex : P(N) → N$ como:\
+*Se define la función $mex:P(N)→N$ como:\
 $mex(X) = mı́n \{ j : j ∈ N ∧ j \notin X\}$*\
 *Intuitivamente, mex devuelve, dado un conjunto X, el menor número natural que no está en x.\
 Por ejemplo, $mex(\{ 0, 1, 2 \}) = 3$, $mex({0, 1, 3}) = 2$ y $mex({1, 2, 3, . . .}) = 0$.*
