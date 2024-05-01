@@ -30,4 +30,28 @@ La complejidad de la función $T(n)$ es $O(n)$.
 
 ---
 
+### 2) T (n) = T (n − 1) + n
+
+Para calcular la complejidad de este algoritmo, se puede utilizar el **método de sustitución**.\
+Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n-1$.\
+Podemos descomponer la recurrencia:\
+$T(n) = T(n-1) + n$\
+$T(n-1) = T(n-2) + n-1$\
+$T(n-2) = T(n-3) + n-2$\
+Y así sucesivamente, hasta llegar a un caso base.
+
+Si suponemos que el caso base es $T(0) = T(1) = C$, donde $C$ es una constante (el tiempo de ejecución para el problema más pequeño), podemos ver cómo se construye la solución:\
+$T(2) = T(1) + 2 = C + 2$\
+$T(3) = T(2) + 3 = C + 2 + 3 = C + 3 + 2$\
+$T(4) = T(3) + 4 = C + 3 + 2 + 4 = C + 4 + 3 + 2$
+
+De esta forma, se puede generalizar la función $T(n)$ como $T(n) = T(n-k) + n + (n-1) + (n-2) + ... + 2$.\
+Para encontrar el valor de $k$, se iguala $n-k$ a 0 y se despeja $k$.\
+$n-k = 0 \Rightarrow k = n$.\
+Entonces, la función $T(n)$ se puede reescribir como $T(n) = T(0) + n + (n-1) + (n-2) + ... + 2 = C + n(n+1)/2$.\
+La complejidad de la función $T(n)$ es $O(n^2)$.
+
+---
+
+
 </font>
