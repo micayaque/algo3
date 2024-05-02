@@ -136,7 +136,7 @@ Dado que $T(1)$ es un valor constante $C$, podemos ver que la complejidad de est
 
 ---
 
-### 6) T (n) = T (n/2) + n
+### 6) T (n) = T ($\frac{n}{2}$) + n
 
 Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n/2$.\
 Podemos descomponer la recurrencia:\
@@ -181,6 +181,46 @@ Para aplicar el caso 3, necesitamos que $f(n)$ sea también  polinomialmente may
 En este caso simple, $f(n) = n$ claramente cumple con ser mayor que $n^0$.
 
 Por lo tanto, por el teorema maestro, la complejidad de $T(n) = T(n/2) + n$ es $O(f(n)) = O(n)$.
+
+---
+
+### 7) T (n) = T ($\frac{n}{2}$) + $\sqrt{n}$
+
+Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $\frac{n}{2}$.\
+Podemos descomponer la recurrencia:\
+$T(n) = T(n/2) + \sqrt{n}$\
+$T(n/2) = T(n/4) + \sqrt{n/2}$\
+$T(n/4) = T(n/8) + \sqrt{n/4}$\
+Y así sucesivamente, hasta llegar a un caso base.
+
+Si suponemos que el caso base es $T(1) = C$, donde $C$ es una constante (el tiempo de ejecución para el problema más pequeño), podemos ver cómo se construye la solución:\
+$T(2) = T(1) + \sqrt{2} = C + \sqrt{2}$\
+$T(4) = T(2) + \sqrt{4} = C + \sqrt{2} + \sqrt{4}$\
+$T(8) = T(4) + \sqrt{8} = C + \sqrt{2} + \sqrt{4} + \sqrt{8}$
+
+De esta forma, se puede generalizar la función $T(n)$ como:\
+$T(n) = T(n/2^k) + \sqrt{n} + \sqrt{n/2} + \sqrt{n/4} + ... + \sqrt{2}$.\
+Para encontrar el valor de $k$, se iguala $\frac{n}{2^k}$ a 1 y se despeja $k$.\
+
+$\frac{n}{2^k} = 1 \Rightarrow k = \log_2{n}$.\
+Entonces, la función $T(n)$ se puede reescribir como:\
+$T(n) = T(1) + \sqrt{n} + \sqrt{n/2} + \sqrt{n/4} + ... + \sqrt{2} = C + \sqrt{n} + \sqrt{n/2} + \sqrt{n/4} + ... + \sqrt{2}$.\
+Que es la suma de la serie infinita $\sqrt{n} + \sqrt{n/2} + \sqrt{n/4} + ... + \sqrt{2}$.\
+Por lo tanto, la complejidad de la función $T(n)$ es $O(\sqrt{n})$ dado que es el término más grande de la sumatoria.
+
+---
+
+Podemos calcular también la complejidad de la función $T(n)$ utilizando el **Teorema Maestro**.\
+Para la función $T(n) = T(n/2) + \sqrt{n}$, tenemos que $a = 1$, $b = 2$ y $f(n) = \sqrt{n}$.\
+Calculamos el valor de $c = \log_b{a} = \log_2{1} = 0$.\
+Dado que $f(n) = \sqrt{n} = O(n^{0})$, entonces $f(n) = O(n^{c})$.\
+$f(n)$, que es $\sqrt{n}$, se compara con $n^{log_b a} = n^{log_2 1} = n^0 = 1$.\
+Dado que $\sqrt{n}$ crece más rápido que $n^0$, estamos en el caso 3 del teorema maestro, donde $f(n)$ es polinomialmente mayor que $n^{log_b a}$.
+
+Para aplicar el caso 3, necesitamos que $f(n)$ sea también  polinomialmente mayor que $n^{log_b a}$ y que cumpla que $af(n/b) \leq kf(n)$ para alguna constante $k < 1$ y suficientemente grande $n$.\
+En este caso simple, $f(n) = \sqrt{n}$ claramente cumple con ser mayor que $n^0$.
+
+Por lo tanto, por el teorema maestro, la complejidad de $T(n) = T(n/2) + \sqrt{n}$ es $O(f(n)) = O(\sqrt{n})$.
 
 ---
 
