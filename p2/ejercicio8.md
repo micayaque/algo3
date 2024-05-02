@@ -40,4 +40,9 @@ La complejidad de este algoritmo es $O(\log n)$, ya que en cada iteración se di
 
 ---
 
+*2. Modificar el algoritmo anterior para que cuente cuántos false hay en la matriz. Asumiendo que hay a lo sumo 5 elementos false en toda la matriz, calcular y justificar la complejidad del algoritmo. Esto se puede lograr con complejidad menor a $O(n^2 )$.*
+
+---
+
+
 </font>
