@@ -286,7 +286,43 @@ Dado que $T(1)$ es un valor constante $C$, podemos ver que la complejidad de est
 
 ---
 
+### 10) T (n) = 2T ($\frac{n}{2}$) + log n
 
+Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $\frac{n}{2}$.\
+Podemos descomponer la recurrencia:\
+$T(n) = 2T(\frac{n}{2}) + \log{n}$\
+$T(\frac{n}{2}) = 2T(\frac{n}{4}) + \log{\frac{n}{2}}$\
+$T(\frac{n}{4}) = 2T(\frac{n}{8}) + \log{\frac{n}{4}}$\
+Y así sucesivamente, hasta llegar a un caso base.
+
+Si suponemos que el caso base es $T(1) = C$, donde $C$ es una constante (el tiempo de ejecución para el problema más pequeño), podemos ver cómo se construye la solución:\
+$T(2) = 2T(1) + \log{2} = 2C + \log{2}$\
+$T(4) = 2T(2) + \log{4} = 2(2C + \log{2}) + \log{4}$\  
+$T(8) = 2T(4) + \log{8} = 2(2(2C + \log{2}) + \log{4}) + \log{8}$
+
+De esta forma, se puede generalizar la función $T(n)$ como:\
+$T(n) = 2T(\frac{n}{2^k}) + \log{n} + \log{\frac{n}{2}} + \log{\frac{n}{4}} + ... + \log{2}$.\
+Para encontrar el valor de $k$, se iguala $\frac{n}{2^k}$ a 1 y se despeja $k$.\
+$\frac{n}{2^k} = 1 \Rightarrow k = \log_2{n}$.\
+Entonces, la función $T(n)$ se puede reescribir como:\
+$T(n) = 2T(1) + \log{n} + \log{\frac{n}{2}} + \log{\frac{n}{4}} + ... + \log{2} = C + \log{n} + \log{\frac{n}{2}} + \log{\frac{n}{4}} + ... + \log{2}$.\
+Que es la suma de la serie infinita $\log{n} + \log{\frac{n}{2}} + \log{\frac{n}{4}} + ... + \log{2}$.\
+Por lo tanto, la complejidad de la función $T(n)$ es $O(\log{n})$ dado que es el término más grande de la sumatoria.
+
+---
+
+Podemos calcular también la complejidad de la función $T(n)$ utilizando el **Teorema Maestro**.\
+Para la función $T(n) = 2T(\frac{n}{2}) + \log{n}$, tenemos que $a = 2$, $b = 2$ y $f(n) = \log{n}$.\
+Calculamos el valor de $c = \log_b{a} = \log_2{2} = 1$.\
+$f(n)$, que es $\log{n}$, se compara con $n^{log_b a} = n^{log_2 2} = n^1 = n$.\
+Dado que $\log{n}$ crece más lentamente que $n$, estamos en el caso 3 del teorema maestro, donde $f(n)$ es polinomialmente menor que $n^{log_b a}$.
+
+Para aplicar el caso 3, necesitamos que $f(n)$ sea también  polinomialmente menor que $n^{log_b a}$ y que cumpla que $af(n/b) \leq kf(n)$ para alguna constante $k > 1$ y suficientemente grande $n$.\
+En este caso simple, $f(n) = \log{n}$ claramente cumple con ser menor que $n$.
+
+Por lo tanto, por el teorema maestro, la complejidad de $T(n) = 2T(\frac{n}{2}) + \log{n}$ es $\theta(\log n)$.
+
+---
 
 
 
