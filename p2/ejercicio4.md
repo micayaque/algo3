@@ -1,5 +1,14 @@
 <font face = "LaTeX">
 
+## <u>Teorema Maestro</u>
+
+Sea $T(n) = aT(\frac{n}{b}) + f(n)$, con $a \geq 1$ y $b > 1$, entonces:\
+Si $f(n) = O(n^{\log_b{a-\epsilon}})$ para algún $\epsilon > 0$, entonces $T(n) = \Theta(n^{\log_b{a}})$.\
+Si $f(n) = \Theta(n^{\log_b{a}})$, entonces $T(n) = \Theta(n^{\log_b{a}}\log n)$.\
+Si $f(n) = \Omega(n^{\log_b{a+\epsilon}})$ para algún $\epsilon > 0$, y si $af(\frac{n}{b}) \leq kf(n)$ para alguna constante $k < 1$ y suficientemente grande $n$, entonces $T(n) = \Theta(f(n))$.
+
+---
+
 ## ComplexityQuest
 *Calcule la complejidad de un algoritmo que utiliza T (n) pasos para una entrada de tamaño n, donde T
 cumple:*
@@ -160,9 +169,6 @@ Por lo tanto, la complejidad de la función $T(n)$ es $O(n)$.
 
 ---
 
-
----
-
 Podemos calcular también la complejidad de la función $T(n)$ utilizando el **Teorema Maestro**.\
 Para la función $T(n) = T(n/2) + n$, tenemos que $a = 1$, $b = 2$ y $f(n) = n$.\
 
@@ -320,11 +326,42 @@ Dado que $\log{n}$ crece más lentamente que $n$, estamos en el caso 3 del teore
 Para aplicar el caso 3, necesitamos que $f(n)$ sea también  polinomialmente menor que $n^{log_b a}$ y que cumpla que $af(n/b) \leq kf(n)$ para alguna constante $k > 1$ y suficientemente grande $n$.\
 En este caso simple, $f(n) = \log{n}$ claramente cumple con ser menor que $n$.
 
-Por lo tanto, por el teorema maestro, la complejidad de $T(n) = 2T(\frac{n}{2}) + \log{n}$ es $\theta(\log n)$.
+Por lo tanto, por el teorema maestro, la complejidad de $T(n) = 2T(\frac{n}{2}) + \log{n}$ es $\Theta(\log n)$.
 
 ---
 
+### 11) T (n) = 3T ($\frac{n}{4}$)
 
+Podemos probarlo usando el **Teorema Maestro**.\
+$a = 3$ porque estamos llamando al problema 3 veces.\
+$b = 4$ porque estamos dividiendo el problema en partes de $\frac{n}{4}$.\
+$f(n) = 0$ porque no hay un trabajo adicional representado fuera de las llamadas recursivas.
+
+Así que estamos en el primer caso del teorema maestro, donde $f(n) = 0 = O(n^0) = O(1)$. Aquí, $\log_b{a} = \log_4{3}$. Dado que $f(n) = O(n^{\log_4{3}-\epsilon})$ para algún $\epsilon > 0$ (puesto que $f(n)$ es constante y, por lo tanto, menor que cualquier función de $n$ para $n$ grande), aplicamos el primer caso del teorema maestro.
+
+Por lo tanto, la complejidad de $T(n) = 3T(\frac{n}{4})$ es $\Theta(n^{\log_4{3}})$.\
+Es decir, la complejidad crece aproximadamente como $n$ elevado a la potencia de $\log_4{3}$.
+
+---
+
+### 12) T (n) = 3T ($\frac{n}{4}$) + n
+
+Podemos probarlo usando el **Teorema Maestro**.\
+$a = 3$ porque estamos llamando al problema 3 veces.\
+$b = 4$ porque estamos dividiendo el problema en partes de $\frac{n}{4}$.\
+$f(n) = n$
+
+Calculamos el valor de $c = \log_b{a} = \log_4{3}$.\
+Dado que $f(n) = n = O(n^1)$, entonces $f(n) = O(n^{c})$.\
+El logaritmo en base 4 de 3 es aproximadamente 0.79.
+
+Así que estamos en el tercer caso del teorema maestro, donde $f(n) = n = \Omega(n^{0.79+\epsilon})$ para algún $\epsilon > 0$. Aquí, $\log_b{a} = \log_4{3}$.\
+Dado que $f(n) = \Omega(n^{\log_4{3}+\epsilon})$ para algún $\epsilon > 0$ (puesto que $f(n)$ es mayor que cualquier función de $n$ para $n$ grande), aplicamos el tercer caso del teorema maestro.
+
+Por lo tanto, la complejidad de $T(n) = 3T(\frac{n}{4}) + n$ es $\Theta(n)$.\
+
+
+---
 
 
 </font>
