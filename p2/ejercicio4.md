@@ -6,6 +6,11 @@ cumple:*
 
 ---
 
+*Intentar estimar la complejidad para cada ítem directamente y luego calcularla utilizando el teorema maestro de ser posible. Para simplificar los cálculos se puede asumir que n es potencia o múltiplo de 2 o de 4 según sea
+conveniente.*
+
+---
+
 ### 1) T (n) = T (n − 2) + 5
 Para calcular la complejidad de este algoritmo, se puede utilizar el **método de sustitución**.\
 Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n-2$.\
@@ -81,7 +86,6 @@ Por lo tanto la complejidad de la función $T(n) = \frac{1 - n^{3/2}}{1 - n} $ e
 
 ### 4) T (n) = T (n − 1) + $n^2$
 
-Para calcular la complejidad de este algoritmo, se puede utilizar el **método de sustitución**.\
 Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n-1$.\
 Podemos descomponer la recurrencia:\
 $T(n) = T(n-1) + n^2$\
@@ -104,6 +108,79 @@ Utilizando la fórmula para la suma de los primeros
 𝑛 cuadrados perfectos: $\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$\
 Por lo tanto $\sum_{i=2}^{n} i^2 = \frac{n(n+1)(2n+1)}{6} - 1$\
 Entonces, la complejidad de la función $T(n)$ es $O(n^3)$.
+
+---
+
+### 5) T (n) = 2T (n − 1)
+
+Para calcular la complejidad de este algoritmo, se puede utilizar el **método de sustitución**.\
+Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n-1$.\
+Podemos descomponer la recurrencia:\
+$T(n) = 2T(n-1)$\
+Reemplazando $T(n-1)$, tenemos:\
+$T(n) = 2*2T(n-2) = 2^2*T(n-2)$\
+$T(n) = 2^3T(n-3)$
+
+De esta forma, se puede generalizar la función $T(n)$ como $T(n) = 2^kT(n-k)$.
+
+Para encontrar la relación entre $n$ y $k$, consideramos el caso base.\
+Generalmente, el caso base es $T(1)$ o $T(0)$, por lo que si $n-k = 1$, entonces $k = n-1$. Sustituyendo $k$ en la ecuación generalizada, tenemos:
+
+$T(n) = 2^{n-1}T(1)$
+
+Dado que $T(1)$ es un valor constante $C$, podemos ver que la complejidad de este algoritmo es $O(2^{n})$, que es exponencial.
+
+---
+
+**El <u>Teorema Maestro</u> se usa para ecuaciones de recurrencia de la forma $T(n) = aT(n/b) + f(n)$, donde las divisiones de $n$ son explícitas.**
+
+---
+
+### 6) T (n) = T (n/2) + n
+
+Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n/2$.\
+Podemos descomponer la recurrencia:\
+$T(n) = T(n/2) + n$\
+$T(n/2) = T(n/4) + n/2$\
+$T(n/4) = T(n/8) + n/4$\
+Y así sucesivamente, hasta llegar a un caso base.
+
+Si suponemos que el caso base es $T(1) = C$, donde $C$ es una constante (el tiempo de ejecución para el problema más pequeño), podemos ver cómo se construye la solución:\
+$T(2) = T(1) + 2 = C + 2$\
+$T(4) = T(2) + 4 = C + 2 + 4$\
+$T(8) = T(4) + 8 = C + 2 + 4 + 8$
+
+De esta forma, se puede generalizar la función $T(n)$ como $T(n) = T(n/2^k) + n + n/2 + n/4 + ... + 2$.\
+Para encontrar el valor de $k$, se iguala $n/2^k$ a 1 y se despeja $k$.\
+$\frac{n}{2^k}  = 1 \Rightarrow k = \log_2{n}$.\
+Entonces, la función $T(n)$ se puede reescribir como:\
+$T(n) = T(1) + n + n/2 + n/4 + ... + 2 = C + n + n/2 + n/4 + ... + 2 = C + n(1 + 1/2 + 1/4 + ... + 1/2^{\log_2{n}})$.\
+Que es la suma de la serie infinita $1 + 1/2 + 1/4 + ... + 1/2^{\log_2{n}}$.\
+Por lo tanto, la complejidad de la función $T(n)$ es $O(n)$.
+
+---
+
+
+---
+
+Podemos calcular también la complejidad de la función $T(n)$ utilizando el **Teorema Maestro**.\
+Para la función $T(n) = T(n/2) + n$, tenemos que $a = 1$, $b = 2$ y $f(n) = n$.\
+
+---
+<strong>El factor de división 𝑐 en el Teorema Maestro se refiere a la relación entre 𝑎 y 𝑏. Si $𝑎=𝑏^𝑐$, entonces el Teorema Maestro puede aplicarse directamente. En general, 𝑐 es un parámetro que describe cómo se divide el problema original en subproblemas más pequeños.</strong>
+
+---
+
+Calculamos el valor de $c = \log_b{a} = \log_2{1} = 0$.\
+Dado que $f(n) = n = O(n^{0})$, entonces $f(n) = O(n^{c})$.\
+
+$f(n)$, que es $n$, se compara con $n^{log_b a} = n^{log_2 1} = n^0 = 1$.\
+Dado que $n$ crece más rápido que $n^0$, estamos en el caso 3 del teorema maestro, donde $f(n)$ es polinomialmente mayor que $n^{log_b a}$.
+
+Para aplicar el caso 3, necesitamos que $f(n)$ sea también  polinomialmente mayor que $n^{log_b a}$ y que cumpla que $af(n/b) \leq kf(n)$ para alguna constante $k < 1$ y suficientemente grande $n$.\
+En este caso simple, $f(n) = n$ claramente cumple con ser mayor que $n^0$.
+
+Por lo tanto, por el teorema maestro, la complejidad de $T(n) = T(n/2) + n$ es $O(f(n)) = O(n)$.
 
 ---
 
