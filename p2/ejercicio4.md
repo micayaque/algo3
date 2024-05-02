@@ -213,7 +213,6 @@ Por lo tanto, la complejidad de la función $T(n)$ es $O(\sqrt{n})$ dado que es 
 Podemos calcular también la complejidad de la función $T(n)$ utilizando el **Teorema Maestro**.\
 Para la función $T(n) = T(n/2) + \sqrt{n}$, tenemos que $a = 1$, $b = 2$ y $f(n) = \sqrt{n}$.\
 Calculamos el valor de $c = \log_b{a} = \log_2{1} = 0$.\
-Dado que $f(n) = \sqrt{n} = O(n^{0})$, entonces $f(n) = O(n^{c})$.\
 $f(n)$, que es $\sqrt{n}$, se compara con $n^{log_b a} = n^{log_2 1} = n^0 = 1$.\
 Dado que $\sqrt{n}$ crece más rápido que $n^0$, estamos en el caso 3 del teorema maestro, donde $f(n)$ es polinomialmente mayor que $n^{log_b a}$.
 
@@ -223,6 +222,72 @@ En este caso simple, $f(n) = \sqrt{n}$ claramente cumple con ser mayor que $n^0$
 Por lo tanto, por el teorema maestro, la complejidad de $T(n) = T(n/2) + \sqrt{n}$ es $O(f(n)) = O(\sqrt{n})$.
 
 ---
+
+### 8) T (n) = T ($\frac{n}{2}$) + $n^2$
+
+Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n/2$.\
+Podemos descomponer la recurrencia:\
+$T(n) = T(\frac{n}{2}) + n^2$\
+$T(\frac{n}{2}) = T(\frac{n}{4}) + (\frac{n}{2})^2$\
+$T(\frac{n}{4}) = T(\frac{n}{8}) + (\frac{n}{4})^2$\
+Y así sucesivamente, hasta llegar a un caso base.
+
+Si suponemos que el caso base es $T(1) = C$, donde $C$ es una constante (el tiempo de ejecución para el problema más pequeño), podemos ver cómo se construye la solución:\
+$T(2) = T(1) + 2^2 = C + 2^2$\
+$T(4) = T(2) + 4^2 = C + 2^2 + 4^2$\
+$T(8) = T(4) + 8^2 = C + 2^2 + 4^2 + 8^2$
+
+De esta forma, se puede generalizar la función $T(n)$ como:\
+$T(n) = T(\frac{n}{2^k}) + n^2 + (\frac{n}{2})^2 + (\frac{n}{4})^2 + ... + 2^2$.\
+Para encontrar el valor de $k$, se iguala $\frac{n}{2^k}$ a 1 y se despeja $k$.\
+$\frac{n}{2^k} = 1 \Rightarrow k = \log_2{n}$.\
+Entonces, la función $T(n)$ se puede reescribir como:\
+$T(n) = T(1) + n^2 + (\frac{n}{2})^2 + (\frac{n}{4})^2 + ... + 2^2 = C + n^2 + (\frac{n}{2})^2 + (\frac{n}{4})^2 + ... + 2^2$.\ 
+Que es la suma de la serie infinita $n^2 + (\frac{n}{2})^2 + (\frac{n}{4})^2 + ... + 2^2$.\
+Por lo tanto, la complejidad de la función $T(n)$ es $O(n^2)$ dado que es el término más grande de la sumatoria.
+
+---
+
+Podemos calcular también la complejidad de la función $T(n)$ utilizando el **Teorema Maestro**.\
+Para la función $T(n) = T(\frac{n}{2}) + n^2$, tenemos que $a = 1$, $b = 2$ y $f(n) = n^2$.\
+Calculamos el valor de $c = \log_b{a} = \log_2{1} = 0$.\
+$f(n)$, que es $n^2$, se compara con $n^{log_b a} = n^{log_2 1} = n^0 = 1$.\
+Dado que $n^2$ crece más rápido que $n^0$, estamos en el caso 3 del teorema maestro, donde $f(n)$ es polinomialmente mayor que $n^{log_b a}$.
+
+Para aplicar el caso 3, necesitamos que $f(n)$ sea también  polinomialmente mayor que $n^{log_b a}$ y que cumpla que $af(n/b) \leq kf(n)$ para alguna constante $k < 1$ y suficientemente grande $n$.\
+En este caso simple, $f(n) = n^2$ claramente cumple con ser mayor que $n^0$.
+
+Por lo tanto, por el teorema maestro, la complejidad de $T(n) = T(\frac{n}{2}) + n^2$ es $O(f(n)) = O(n^2)$.
+
+---
+
+### 9) T (n) = 2T (n − 4)
+
+Para calcular la complejidad de este algoritmo, se puede utilizar el **método de sustitución**.\
+Se puede observar que la función $T(n)$ se llama a sí misma con un parámetro $n-4$.\
+Podemos descomponer la recurrencia:\
+$T(n) = 2T(n-4)$\
+Reemplazando $T(n-4)$, tenemos:\
+$T(n) = 2*2T(n-8) = 2^2*T(n-8)$\
+$T(n) = 2^3T(n-12)$
+
+De esta forma, se puede generalizar la función $T(n)$ como $T(n) = 2^kT(n-4k)$.
+
+Para encontrar la relación entre $n$ y $k$, consideramos el caso base.\
+Generalmente, el caso base es $T(1)$ o $T(0)$, por lo que si $n-4k = 1$, entonces $k = (n-1)/4$. Sustituyendo $k$ en la ecuación generalizada, tenemos:
+
+$T(n) = 2^{\frac{(n-1)}{4}}*T(1)$
+
+Dado que $T(1)$ es un valor constante $C$, podemos ver que la complejidad de este algoritmo es $O(2^{(n-1)/4})$, que es exponencial.
+
+---
+
+**El <u>Teorema Maestro</u> se usa para ecuaciones de recurrencia de la forma $T(n) = aT(n/b) + f(n)$, donde las divisiones de $n$ son explícitas.**
+
+---
+
+
+
 
 
 
