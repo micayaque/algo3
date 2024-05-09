@@ -98,6 +98,40 @@ Por lo tanto, ninguna arista de `G \ {vw}` une a un descendiente de w (o a w) co
 ![Grafo con arista puente](./img/puente.png)
 
 
+$\Leftarrow$)
+---
+
+Suponemos que `v es padre de w en T y ninguna arista de G \ {vw} une a un descendiente de w (o a w) con un ancestro de v (o con v)`.\
+Queremos ver que `vw es puente de G`.
+
+Como `v es padre de w en T`, la arista `vw` es parte del árbol DFS `T`.
+
+Además, `ninguna arista de G\{vw} une a un descendiente de w (o a w) con un ancestro de v (o con v) en T`.
+
+Es decir, no hay un camino entre `v` y `w` que no pase por `vw`.
+
+Si removemos `vw` de `G`, el grafo `G` deja de ser conexo.\
+Esto es porque no hay un camino entre `v` y `w` que no pase por `vw`.\
+Por lo tanto, `vw` es puente de `G`.
+
+$\blacksquare$
+
+---
+
+*d) Dar un algoritmo lineal basado en DFS para encontrar todas las aristas puente de G.*
+---
+*<u>Ayuda</u>: el algoritmo puede hacer un uso inteligente de un único DFS.\
+Conceptualmente, y a los efectos de este ejercicio, puede convenir separar el algoritmo en dos fases.*
+1. *La primera fase aplica DFS para calcular el **mínimo nivel** que se puede alcanzar desde cada vértice usando **back edges** que estén en su subárbol.*
+2. *La segunda fase recorre todas las aristas (sin DFS) para chequear la condición.*
+
+---
+
+**Back edge**: It is an edge (u, v) such that v is the ancestor of node u but is not part of the DFS tree.
+
+---
+
+
 
 
 </font>
