@@ -1,7 +1,7 @@
-<font face="LaTeX">
-
 ### ParejasdeBaile
 *Tenemos dos conjuntos de personas y para cada persona sabemos su habilidad de baile. Queremos armar la máxima cantidad de parejas de baile, sabiendo que para cada pareja debemos elegir exactamente una persona de cada conjunto de modo que la diferencia de habilidad sea menor o igual a 1 (en módulo). Además, cada persona puede pertenecer a lo sumo a una pareja de baile. Por ejemplo, si tenemos un multiconjunto con habilidades {1, 2, 4, 6} y otro con {1, 5, 5, 7, 9}, la máxima cantidad de parejas es 3. Si los multiconjuntos de habilidades son {1, 1, 1, 1, 1} y {1, 2, 3}, la máxima cantidad es 2.*
+
+---
 
 *a) Considerando que ambos multiconjuntos de habilidades estan ordenados en forma creciente,
 observar que la solución se puede obtener recorriendo los multiconjuntos en orden para realizar los emparejamientos.*
@@ -30,31 +30,36 @@ def parejas_de_baile(habilidades1, habilidades2):
 
 La complejidad temporal del algoritmo es O(n + m) donde n y m son la cantidad de elementos de los multiconjuntos de habilidades. La complejidad espacial auxiliar es O(1).
 
-
 *c) Demostrar por inducción que el algoritmo dado en b) es correcto.*
 
-<u>**Hipótesis inductiva:** </u>
+Sea $G_k$ una solución parcial construida mediante nuestra estrategia golosa luego de k iteraciones del algoritmo y $O_k$ una solución parcial óptima.
 
-Supongamos que el algoritmo encuentra la cantidad máxima de parejas de baile óptima para los primeros $𝑘 $ elementos de las listas *habilidades1* y *habilidades2*. $𝑃(𝑘) $
+Sea n = $|S_k|$ queremos demostrar por inducción que $|G_k|$ $\geq$ $|O_k|$ para todo k = 1, 2, ..., n.
 
-<u>**Caso base:** </u>
+Al comienzo de la k-ésima iteración del algoritmo tiene en consideración los primeros i elementos de habilidades1 y los primeros j elementos de habilidades2. 
 
-Para el caso base, consideremos cuando una de las listas *habilidades1* o *habilidades2* es **vacía**. En este caso, no se pueden formar parejas de baile, por lo que la cantidad máxima de parejas es 0. El algoritmo devuelve correctamente 0 en este caso, ya que no hay elementos para comparar.
+<u> Caso base: </u> k = 0
 
-Por lo tanto, el algoritmo satisface el caso base. 
+Como todavía no comenzamos a elegir parejas, i = 0 y j = 0. Por lo tanto, $|G_0|$ = 0 y cualquier solución óptima $|O_0|$ = 0 porque no tenian nada para elegir aún.
 
-<u>**Paso inductivo:** </u>
+<u> Paso inductivo: </u> k $\geq$ 0
 
-Queremos probar que también encuentra la cantidad de parejas de baile óptima para los primeros $𝑘+1 $ elementos de las listas *habilidades1* y *habilidades2*. $P(𝑘+1) $
+Supongamos que $|G_k|$ $\geq$ $|O_k|$ para algún k $\geq$ 0. Queremos demostrar que $|G_{k+1}|$ $\geq$ $|O_{k+1}|$.
 
+Por definición de nuestra estrategia golosa para la k+1-ésima iteración, si la diferencia de habilidad entre habilidades1[i] y habilidades2[j] es menor o igual a 1, entonces se elige esa pareja. En caso contrario, se avanza en el multiconjunto que tenga la habilidad menor.
 
-* Si el 𝑘+1-ésimo elemento de *habilidades1* es emparejado con el 𝑘+1-ésimo elemento de *habilidades2*, entonces la cantidad total de parejas será  $𝑃(𝑘)+1 $. Por **HI** suponemos que la cantidad óptima de parejas para los primeros 𝑘 elementos es $P(𝑘) $, y agregamos una pareja más al emparejar estos dos elementos. Esto nos da $𝑃(𝑘)+1 $ parejas en total, que es la cantidad óptima de parejas para los primeros $𝑘+1 $ elementos.
-* Si el 𝑘+1-ésimo elemento de *habilidades1* no puede ser emparejado con el 𝑘+1-ésimo elemento de *habilidades2*, entonces el algoritmo avanzará en una de las listas y no se contará una pareja adicional porque al estar las habilidades ordenadas ascendentemente no tenemos forma de crear una nueva pareja con el elemento que estamos mirando ya que a la derecha de elemento mayor solo van a haber elementos de habilidad mayor lo que solo aumentaría más aún el módulo de la diferencia de habilidades. 
+Si la pareja es elegida, entonces $|G_{k+1}|$ = $|G_k|$ + 1 (por definición del algoritmo) y $|O_{k+1}|$ $\leq$ $|O_k|$ + 1 (porque la solución óptima no puede ser peor que la solución parcial óptima anterior). 
 
-    Esto significa que la cantidad óptima de parejas para los primeros 𝑘+1 elementos sigue siendo 𝑃(𝑘), ya que no se agregó ninguna pareja adicional. Como suponemos que el algoritmo encuentra la cantidad máxima de parejas para los primeros 𝑘 elementos, no se contará ninguna pareja más en este caso.
+Como $|G_k|$ $\geq$ $|O_k|$ por hipótesis y $|G_{k+1}|$ = $|G_k|$ + 1 y $|O_{k+1}|$ $\leq$ $|O_k|$ + 1, entonces $|G_{k}|$ + 1 $\geq$ $|O_{k}| + 1$.\
+(Restamos 1 de cada lado y nos queda la HI).
 
-Por lo tanto, en ambos casos, el algoritmo encontrará la cantidad máxima de parejas de baile óptima para los primeros $𝑘+1 $ elementos de las listas *habilidades1* y *habilidades2*.
-Dado que el algoritmo comienza con la cantidad máxima de parejas de baile para los primeros elementos y avanza de manera golosa, siempre seleccionando la pareja más compatible en ese momento, el algoritmo encuentra la solución óptima.
-$\blacksquare $
+Por lo tanto, $|G_{k+1}|$ $\geq$ $|O_{k+1}|$ para todo k $\geq$ 0.
 
-</font>
+Si la pareja no es elegida, entonces $|G_{k+1}|$ = $|G_k|$.\
+Como los conjuntos de habilidades están ordenados en forma creciente, entonces la diferencia de habilidad entre el de menor habilidad y los de habilidades restantes del otro conjunto va a ser aún mayor. Por lo tanto, no se va a poder elegir ninguna pareja más adelante.\
+Por lo tanto, la solución óptima tampoco va a poder elegir pareja en ese caso.\
+Por lo tanto, $|O_{k+1}|$ = $|O_k|$.
+
+Y por HI $|G_{k+1}|$ = $|G_k|$ $\geq$ $|O_k|$ = $|O_{k+1}|$.
+
+$\blacksquare$
