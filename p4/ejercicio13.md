@@ -10,10 +10,7 @@ posible\ para\ ser\ agregada}$, entre esas opciones se elige alguna de mínima $
 a) Demostrar que para todo árbol generador mínimo T de G, si las $\textcolor{pink}{prioridades\ de\ asignación}$ están definidas por la función
 ---
 
-$$q(e) = \begin{cases} 
-    0 & \text{si } e \in T \\
-    1 & \text{si } e \notin T
-   \end{cases}$$
+$$q(e)=\begin{cases} 0 & \text{si } e \in T \\ 1 & \text{si } e \notin T\end{cases}$$
 ---
 
 entonces se obtiene T como resultado del algoritmo de Kruskal (resp. Prim) con $\textcolor{salmon}{orden\ de\ selección}$ ejecutado sobre G (resp. cualquiera sea el vértice inicial en el caso de Prim).
