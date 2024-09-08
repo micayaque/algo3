@@ -92,10 +92,9 @@ bool is_magic_square(vector<int> square){
 
 El árbol de backtracking en el primer nivel ubica $n²$ números posibles en la primera posición de tablero.\
 En el segundo nivel, para cada uno de esos posibles tableros ($n²$) ubica ($n²-1$ (menos el que ya uso en cada caso)) números por lo que en total ubica $n²*(n-1)$ números en el segundo nivel.\
-En el tercer nivel para cada uno de esos $n²*(n²-1)$
- tableros ubica en cada uno $n²*(n²-1)*(n²-2)$ números en cada tablero.\
+En el tercer nivel para cada uno de esos $n²*(n²-1)$ tableros ubica en cada uno $n²*(n²-1)*(n²-2)$ números en cada tablero.\
  Y así continúa hasta que sólo tiene ún número (el de la última posición) para ubicar por lo que solo tiene un tablero.\
-Por lo tanto si en el primer nivel tiene $n²$ nodos, en el segundo $n²*(n²-1)$, en el tercero $n²*(n²-1)*(n²-2)$ ... podemos formular que tiene:$\prod_{k=0}^{n^2-1} (n^2 - k)$
+Por lo tanto si en el primer nivel tiene $n²$ nodos, en el segundo $n²*(n²-1)$, en el tercero $n²*(n²-1)*(n²-2)$ ... podemos formular que tiene: $$\prod_{k=0}^{n^2-1} (n^2 - k)$$
 nodos que es exactamente el factorial y esta productoria tiene $O(n^2)!$ nodos en peor caso.
 
 ---
@@ -171,8 +170,8 @@ Modificar la implementación y comparar los tiempos obtenidos para calcular la c
 
 Si existe un cuadrado mágico $M$ de orden $n$, la suma de **todas las filas** del mismo equivale a la suma de todos sus elementos, siendo estos los números de $1$ a $n^2$, entonces:
 
-$\begin{align}\nonumber \sum_{i=1}^n \sum_{j=1}^n M_{ij} = \sum_{k=1}^{n^2} k = \frac{n^2\cdot(n^2 + 1)}{2} \end{align}$
+$$\sum_{i=1}^{n} \sum_{j=1}^{n} M_{ij} = \frac{n^2\cdot(n^2 + 1)}{2}$$
 
 Dado que cualquier fila $k$, $1≤k≤n$, debe sumar lo mismo que cualquier otra fila $j$, $1≤j≤n$, podemos concluir que:
 
-$\begin{align}\nonumber \sum_{j=1}^n M_{kj} = \frac{1}{n} \cdot \frac{n^2\cdot(n^2 + 1)}{2} = \frac{(n^3 + n)}{2} \end{align}$
+$$\sum_{j=1}^{n} M_{kj} = \frac{1}{n} \cdot \frac{n^2\cdot(n^2 + 1)}{2} = \frac{(n^3 + n)}{2} $$
