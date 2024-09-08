@@ -170,8 +170,8 @@ Modificar la implementación y comparar los tiempos obtenidos para calcular la c
 
 Si existe un cuadrado mágico $M$ de orden $n$, la suma de **todas las filas** del mismo equivale a la suma de todos sus elementos, siendo estos los números de $1$ a $n^2$, entonces:
 
-$\begin{align}\nonumber \sum_{i=1}^n \sum_{j=1}^n M_{ij} = \sum_{k=1}^{n^2} k = \frac{n^2\cdot(n^2 + 1)}{2} \end{align}$
+$$\sum_{i=1}^{n} \sum_{j=1}^{n} M_{ij} = \frac{n^2\cdot(n^2 + 1)}{2}$$
 
 Dado que cualquier fila $k$, $1≤k≤n$, debe sumar lo mismo que cualquier otra fila $j$, $1≤j≤n$, podemos concluir que:
 
-$\begin{align}\nonumber \sum_{j=1}^n M_{kj} = \frac{1}{n} \cdot \frac{n^2\cdot(n^2 + 1)}{2} = \frac{(n^3 + n)}{2} \end{align}$
+$$\sum_{j=1}^{n} M_{kj} = \frac{1}{n} \cdot \frac{n^2\cdot(n^2 + 1)}{2} = \frac{(n^3 + n)}{2} $$
