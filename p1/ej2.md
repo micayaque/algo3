@@ -92,8 +92,7 @@ bool is_magic_square(vector<int> square){
 
 El árbol de backtracking en el primer nivel ubica $n²$ números posibles en la primera posición de tablero.\
 En el segundo nivel, para cada uno de esos posibles tableros ($n²$) ubica ($n²-1$ (menos el que ya uso en cada caso)) números por lo que en total ubica $n²*(n-1)$ números en el segundo nivel.\
-En el tercer nivel para cada uno de esos $n²*(n²-1)$
- tableros ubica en cada uno $n²*(n²-1)*(n²-2)$ números en cada tablero.\
+En el tercer nivel para cada uno de esos $n²*(n²-1)$ tableros ubica en cada uno $n²*(n²-1)*(n²-2)$ números en cada tablero.\
  Y así continúa hasta que sólo tiene ún número (el de la última posición) para ubicar por lo que solo tiene un tablero.\
 Por lo tanto si en el primer nivel tiene $n²$ nodos, en el segundo $n²*(n²-1)$, en el tercero $n²*(n²-1)*(n²-2)$ ... podemos formular que tiene:$\prod_{k=0}^{n^2-1} (n^2 - k)$
 nodos que es exactamente el factorial y esta productoria tiene $O(n^2)!$ nodos en peor caso.
