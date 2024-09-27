@@ -40,7 +40,7 @@ int min_vida(int i, int j, int vida_actual){
 }
 ```
 
-#### b) Convencerse de que excepto que estemos en los límites del terreno, la mínima vida necesaria al llegar a la posición $i, j $ es el resultado de restar al mínimo entre la mínima vida necesaria en $i+1, j $ y aquella en $i, j+1 $, el valor $A_{i,j} $ , salvo que eso fuera menor o igual que 0, en cuyo caso sería $1 $.
+#### b) Convencerse de que excepto que estemos en los límites del terreno, la mínima vida necesaria al llegar a la posición $i,j$ es el resultado de restar al mínimo entre la mínima vida necesaria en $i+1,j$ y aquella en $i,j+1$, el valor $A_{i,j}$ , salvo que eso fuera menor o igual que 0, en cuyo caso sería $1$.
 
 #### c) Escribir una formulación recursiva basada en b). Explicar su semántica e indicar cuáles serían los parámetros para resolver el problema.
 
