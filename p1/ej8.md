@@ -22,7 +22,28 @@ Queremos encontrar el $\textcolor{purple}{mínimo\ costo\ posible\ de\ cortar\ u
 #### b) Escribir matemáticamente una formulación recursiva basada en a). Explicar su semántica e indicar cuáles serían los parámetros para resolver el problema.
 
 ```math
-minCosto(i, j, C) = \begin{cases} 0 & \text{si j=i} \\ j - i + \min_{\forall c \in C} \{ minCosto(i, c, C) + minCosto(c, j, C) & \text{sino} \end{cases}
+minCosto(i, j, C) = \begin{cases} 0 & \text{si j=i} \\ j - i + \min \{ minCosto_{\forall c \in C:c \gt i}(i, c, C) + minCosto_{\forall c \in C:c \lt j}(c, j, C) & \text{sino} \end{cases}
 ```
 La función devuelve el mínimo costo de cortar una vara que abarca desde $i$ hasta $j$ con el conjunto $C$ de lugares de corte. Los parámetros para resolver el problema son $i \textcolor{purple}{(desde\ donde\ comienza\ la\ vara)} $, $j \textcolor{purple}{(donde\ termina\ la\ vara)}$ y $C \textcolor{purple}{(el\ conjunto\ de\ puntos\ donde\ puede\ cortarse\ la\ vara)} $.
 
+#### c) Diseñar un algoritmo de PD y dar su complejidad temporal y espacial auxiliar. Comparar cómo resultaría un enfoque top-down con uno bottom-up.
+
+```C++
+const int INF = 1e9;
+int minCosto(int i, int j, vector<int>& C, vector<vector<int>>& memo) {
+    if (memo[i][j] != INF) return memo[i][j];
+    int min_costo = INF;
+    for (int c : C) {
+        if (c > i && c < j) {
+            int costo = (j - i) + minCosto(i, c, C, memo) + minCosto(c, j, C, memo);
+            min_costo = min(min_costo, costo);
+        }
+    }
+    memo[i][j] = min_costo;
+    return memo[i][j];
+}
+```
+
+La complejidad temporal de algoritmo es $O( |C| \cdot l^2) $ y la complejidad espacial auxiliar es $O(l^2) $.
+
+#### d) Supongamos que se ordenan los elementos de $C$ en un vector cortes y se agrega un $0$ al principio y un $ℓ$ al final. Luego, se considera que el mínimo costo para cortar desde el $i-ésimo$ punto de corte en cortes hasta el $j-ésimo$ punto de corte será el resultado buscado si $i = 1$ y $j = |C| + 2$.
