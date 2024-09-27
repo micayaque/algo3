@@ -24,5 +24,5 @@ Queremos encontrar el $\textcolor{purple}{mínimo\ costo\ posible\ de\ cortar\ u
 ```math
 minCosto(i, j, C) = \begin{cases} 0 & \text{si j=i} \\ j - i + \min_{\forall c \in C} \{ minCosto(i, c, C) + minCosto(c, j, C) & \text{sino} \end{cases}
 ```
-La función $minCost(i, j, C) $ devuelve el mínimo costo de cortar una vara que abarca desde $i$ hasta $j$ con el conjunto $C$ de lugares de corte. Los parámetros para resolver el problema son $i \textcolor{purple}{(desde\ donde\ comienza\ la\ vara)} $, $j \textcolor{purple}{(donde\ termina\ la\ vara)}$ y $C \textcolor{purple}{(el\ conjunto\ de\ puntos\ donde\ puede\ cortarse\ la\ vara)} $.
+La función devuelve el mínimo costo de cortar una vara que abarca desde $i$ hasta $j$ con el conjunto $C$ de lugares de corte. Los parámetros para resolver el problema son $i \textcolor{purple}{(desde\ donde\ comienza\ la\ vara)} $, $j \textcolor{purple}{(donde\ termina\ la\ vara)}$ y $C \textcolor{purple}{(el\ conjunto\ de\ puntos\ donde\ puede\ cortarse\ la\ vara)} $.
 
