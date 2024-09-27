@@ -47,3 +47,26 @@ int minCosto(int i, int j, vector<int>& C, vector<vector<int>>& memo) {
 La complejidad temporal del algoritmo es $O(n* l^2)$ con $n$ la longitud de $C$ y la complejidad espacial auxiliar es $O(l^2) $.
 
 #### d) Supongamos que se ordenan los elementos de $C$ en un vector cortes y se agrega un $0$ al principio y un $ℓ$ al final. Luego, se considera que el mínimo costo para cortar desde el $i-ésimo$ punto de corte en cortes hasta el $j-ésimo$ punto de corte será el resultado buscado si $i = 1$ y $j = |C| + 2$.
+
+#### I) Escribir una formulación recursiva con dos parámetros que esté basada en d) y explicar su semántica.
+
+```math
+minCosto(i, j) = cortes[j] - cortes[i] + \min_{c \in [i+1, j-1]} \{ minCosto(i, c) + minCosto(c, j) \}
+```
+
+
+#### II) Diseñar un algoritmo de PD, dar su complejidad temporal y espacial auxiliar y compararlas con aquellas de c). Comparar cómo resultaría un enfoque top-down con uno bottom-up.
+
+```C++
+const int INF = 1e9;
+int minCosto(int i, int j, vector<int>& cortes, vector<vector<int>>& memo) {
+    if (memo[i][j] != INF) return memo[i][j];
+    int min_costo = INF;
+    for (int c = i + 1; c < j; c++) {
+        int costo = (cortes[j] - cortes[i]) + minCosto(i, c, cortes, memo) + minCosto(c, j, cortes, memo);
+        min_costo = min(min_costo, costo);
+    }
+    memo[i][j] = 
+    return memo[i][j] = min_costo;
+} 
+```
