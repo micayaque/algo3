@@ -10,7 +10,9 @@ el i-ésimo día en una secuencia de $n$ días. Astro Void quiere comprar y vend
 
 #### a) Convencerse de que la máxima ganancia neta (m.g.n.), si Astro Void tiene c asteroides al fin del día j, es:
 
-$indefinido$ (i.e., $-\infty$) si $c < 0$ o $c > j$,$\textcolor{purple}{si\ c\ (cantidad\ de\ asteroides\ <0\ \rightarrow vendí\ más\ que\ un\ asteroide\ por\ día,\ lo\ cual\ no\ está\ permitido \\ análogamente\ si\ c>j (cantidad\ de\ días\ que\ pasaron)\ \rightarrow compré\ más\ de\ un\ asteroide\ por\ día )}$ 
+$indefinido$ (i.e., $-\infty$) si $c < 0$ o $c > j$,
+
+$\textcolor{purple}{si\ c\ (cantidad\ de\ asteroides\ <0\ \rightarrow vendí\ más\ que\ un\ asteroide\ por\ día,\ lo\ cual\ no\ está\ permitido \\ análogamente\ si\ c>j (cantidad\ de\ días\ que\ pasaron)\ \rightarrow compré\ más\ de\ un\ asteroide\ por\ día )}$ 
 
 o el $máximo$ entre:
 
