@@ -54,3 +54,47 @@ max( min(min\_vida(i+1, j), min\_vida(i, j+1)) - A[i][j], 1) & \text{si } i < m-
 
 En un enfoque $\textcolor{pink}{top-down}$, se calcula la mínima vida necesaria para llegar a la posición $i,j$ a partir de las mínimas vidas necesarias para llegar a las posiciones $i+1,j$ y $i,j+1 $. En un enfoque $\textcolor{pink}{bottom-up}$, se calcula la mínima vida necesaria para llegar a la posición $i,j$ a partir de las mínimas vidas necesarias para llegar a las posiciones $i-1,j$ y $i,j-1$.
 
+```C++
+const int INF = 1e9;
+
+int min_vida(int i, int j, vector<vector<int>>& A, vector<vector<int>>& memo){
+    if(memo[i][j] != INF) return memo[i][j];
+    if(i == m-1 && j == n-1) memo[i][j] = max(1, 1 - A[i][j]);
+    if(i < m-1 && j == n-1) memo[i][j] = max(1, min_vida(i+1, j, A, memo) - A[i][j]);
+    if(j < n-1 && i == m-1) memo[i][j] = max(1, min_vida(i, j+1, A, memo) - A[i][j]);
+    if(i < m-1 && j < n-1) memo[i][j] = max(1, min(min_vida(i+1, j, A, memo), min_vida(i, j+1, A, memo)) - A[i][j]);
+    return memo[i][j];
+}   
+```
+
+Complejidad temporal: $O(m*n)$.
+
+Complejidad espacial auxiliar: $O(m*n)$.
+
+![Enfoque Top-Down](./img/enfoque_top_down.png)
+
+#### e) Dar un algoritmo bottom-up cuya complejidad temporal sea $O(m*n)$ y la espacial auxiliar sea $O(mı́n(m,n))$.
+
+
+```python
+def min_vida():
+    memo = [INF for _ in range(min(m, n))]
+    memo[-1] = max(1, 1 - A[-1][-1])
+    for i in range(m-1, -1, -1):
+        for j in range(n-1, -1, -1):
+            if i == m-1 and j == n-1:
+                memo[j] = max(1, 1 - A[i][j])
+            if i < m-1 and j == n-1:
+                memo[j] = max(1, memo[j] - A[i][j])
+            if j < n-1 and i == m-1:
+                memo[j] = max(1, memo[j+1] - A[i][j])
+            if i < m-1 and j < n-1:
+                memo[j] = max(1, min(memo[j], memo[j+1]) - A[i][j])
+    return memo[0]
+```
+
+*Complejidad temporal: $O(mn) $.*
+
+*Complejidad espacial auxiliar: $O(mı́n(m, n)) $.*
+
+![Enfoque Bottom-Up](./img/enfoque_bottom_up.png)
