@@ -6,9 +6,9 @@ Para poder adquirir el producto debemos cubrir su costo usando un subconjunto de
 
 Por lo tanto, entre las opciones de mínimo exceso posible, queremos una con la menor cantidad de billetes. 
 
-Por ejemplo, si $c = 14$ y $B =$ {$2, 3, 5, 10, 20, 20$}, la solución es pagar $15$, con exceso $1$, insertando sólo dos billetes: uno de $10$ y otro de $5$.
+Por ejemplo, si $c = 14$ y $B = (2, 3, 5, 10, 20, 20)$, la solución es pagar $15$, con exceso $1$, insertando sólo dos billetes: uno de $10$ y otro de $5$.
 
-#### a) Considerar la siguiente estrategia por backtracking para el problema, donde $B = {$b_1 , . . . , b_n $}.
+#### a) Considerar la siguiente estrategia por backtracking para el problema, donde $B = (b_1 , . . . , b_n )$.
 
 #### Tenemos dos posibilidades: o agregamos el billete $b_n$, gastando un billete y quedando por pagar $c − b_n$ , o no agregamos el billete $b_n$, gastando 0 billetes y quedando por pagar c.
 
@@ -16,7 +16,7 @@ Por ejemplo, si $c = 14$ y $B =$ {$2, 3, 5, 10, 20, 20$}, la solución es pagar 
 
 Asumiendo que $i$ es un iterador de $B$
 
-$$ cc(B_i, c, q) =  \begin{cases} (\infty,\infty) & \text{si } i = n \ \land \ c \gt 0 \\ (c,q) & \text{si } i = n+1 \ \land \ c \leq \ 0 \\ (\pi_1 (cc(B_{i+1}, c, q)), min\{ \pi_2 (cc(B_{i+1}, c, q)),\ \pi_2(cc(B_{i+1}, c − b_n, q+1 )) \}) & \text{si $\pi_1 (cc(B_{i+1}, c, q)) = \pi_1(cc(B_{i+1}, c − b_n, q+1))$} \\ (max \{ \pi_1 (cc(B_{i+1}, c, q)), \pi_1(cc(B_{i+1}, c − b_n, q+1 )), \ q) & \text{sino} \end{cases}$$
+$$ cc(B_i, c, q) =  \begin{cases} (\infty,\infty) & \text{si } i = n \ \land \ c \gt 0 \\ (c,q) & \text{si } i = n+1 \ \land \ c \leq \ 0 \\ (\pi_1 (cc(B_{i+1}, c, q)), min\{ \pi_2 (cc(B_{i+1}, c, q)),\ \pi_2(cc(B_{i+1}, c − b_n, q+1 )) \}) & \text{si $\pi_1 (cc(B_{i+1}, c, q)) = \pi_1(cc(B_{i+1}, c − b_n, q+1))$} \\ (max \{ \pi_1 (cc(B_{i+1}, c, q)), \pi_1(cc(B_{i+1}, c − b_n, q+1 )), \ q) & \text{sino} \end{cases} $$
 
 #### b) Implementar la función de a) en un lenguaje de programación imperativo utilizando una función recursiva con parámetros $B, i, j$ que compute $cc((b_1 , . . . , b_i), j)$. ¿Cuál es la complejidad del algoritmo?
 
