@@ -2,7 +2,9 @@ Travesía Vital
 ---
 Hay un terreno, que podemos pensarlo como una grilla de $m$ filas y $n$ columnas, con trampas y pociones.
 
-Queremos llegar `de la esquina superior izquierda hasta la inferior derecha`, y desde cada casilla sólo podemos movernos a la casilla de la $derecha$ o a la de $abajo$. Cada casilla $i,j $ tiene un número entero $A_{i,j} $ que nos modificará el nivel de vida sumándonos el número $A_{i,j} $ (si es $negativo$, nos va a restar $| A_{i,j} | $ de vida). 
+Queremos llegar `de la esquina superior izquierda hasta la inferior derecha`, y desde cada casilla sólo podemos movernos a la casilla de la $derecha$ o a la de $abajo$. 
+
+Cada casilla $i,j$ tiene un número entero $A_{i,j}$ que nos modificará el nivel de vida sumándonos el número $A_{i,j}$ (si es $negativo$, nos va a restar $|A_{i,j}|$ de vida). 
 
 Queremos saber el $\textcolor{pink}{mínimo\ nivel\ de\ vida}$ con el que debemos comenzar tal que haya un camino posible de modo que en todo momento nuestro nivel
 de vida sea al menos $1$.
