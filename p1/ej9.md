@@ -48,5 +48,9 @@ int min_vida(int i, int j, int vida_actual){
 min\_vida(i, j) = \begin{cases} 
 max( min(min\_vida(i+1, j), min\_vida(i, j+1)) - A[i][j], 1) & \text{si } i < m-1 \text{ y } j < n-1 \\
  \end{cases}
+```
 
+#### d) Diseñar un algoritmo de PD y dar su complejidad temporal y espacial auxiliar. Comparar cómo resultaría un enfoque top-down con uno bottom-up.
+
+En un enfoque $\textcolor{pink}{top-down}$, se calcula la mínima vida necesaria para llegar a la posición $i,j$ a partir de las mínimas vidas necesarias para llegar a las posiciones $i+1,j$ y $i,j+1 $. En un enfoque $\textcolor{pink}{bottom-up}$, se calcula la mínima vida necesaria para llegar a la posición $i,j$ a partir de las mínimas vidas necesarias para llegar a las posiciones $i-1,j$ y $i,j-1$.
 
