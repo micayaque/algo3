@@ -45,4 +45,8 @@ int mgn(int i, int c, const vector<int>& p, vector<vector<int>>& memo){
     return memo[i][c] = max(mgn(i+1, c-1, p, memo) + p[i], mgn(i+1, c+1, p, memo) - p[i], mgn(i+1, c, p, memo));
 }
 ```
-La complejidad temporal del algoritmo es $O(nc)\ \textcolor{purple}{con\ n\ la\ cantidad\ de\ días\ y\ c\ la\ cantidad\ de\ asteroides\ que\ podemos\ comprar/vender,\ osea\ n\ también) } $  y la complejidad espacial auxiliar es también $O(nc) $.
+La complejidad temporal del algoritmo es: $O(nc)$ 
+
+$\textcolor{purple}{con\ n\ la\ cantidad\ de\ días\ y\ c\ la\ cantidad\ de\ asteroides\ que\ podemos\ comprar/vender,\ osea\ n\ también) }$ 
+
+y la complejidad espacial auxiliar es también $O(nc) $.
