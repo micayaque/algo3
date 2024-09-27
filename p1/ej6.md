@@ -16,7 +16,9 @@ Por ejemplo, si $c = 14$ y $B = (2, 3, 5, 10, 20, 20)$, la solución es pagar $1
 
 Asumiendo que $i$ es un iterador de $B$
 
-$$ cc(B_i, c, q) =  \begin{cases} (\infty,\infty) & \text{si } i = n \ \land \ c \gt 0 \\ (c,q) & \text{si } i = n+1 \ \land \ c \leq \ 0 \\ (\pi_1 (cc(B_{i+1}, c, q)), min\{ \pi_2 (cc(B_{i+1}, c, q)),\ \pi_2(cc(B_{i+1}, c − b_n, q+1 )) \}) & \text{si $\pi_1 (cc(B_{i+1}, c, q)) = \pi_1(cc(B_{i+1}, c − b_n, q+1))$} \\ (max \{ \pi_1 (cc(B_{i+1}, c, q)), \pi_1(cc(B_{i+1}, c − b_n, q+1 )), \ q) & \text{sino} \end{cases} $$
+```math
+ cc(B_i, c, q) =  \begin{cases} (\infty,\infty) & \text{si } i = n \ \land \ c \gt 0 \\ (c,q) & \text{si } i = n+1 \ \land \ c \leq \ 0 \\ (\pi_1 (cc(B_{i+1}, c, q)), min\{ \pi_2 (cc(B_{i+1}, c, q)),\ \pi_2(cc(B_{i+1}, c − b_n, q+1 )) \}) & \text{si $\pi_1 (cc(B_{i+1}, c, q)) = \pi_1(cc(B_{i+1}, c − b_n, q+1))$} \\ (max \{ \pi_1 (cc(B_{i+1}, c, q)), \pi_1(cc(B_{i+1}, c − b_n, q+1 )), \ q) & \text{sino} \end{cases}
+```
 
 #### b) Implementar la función de a) en un lenguaje de programación imperativo utilizando una función recursiva con parámetros $B, i, j$ que compute $cc((b_1 , . . . , b_i), j)$. ¿Cuál es la complejidad del algoritmo?
 
