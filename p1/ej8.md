@@ -44,6 +44,6 @@ int minCosto(int i, int j, vector<int>& C, vector<vector<int>>& memo) {
 }
 ```
 
-La complejidad temporal de algoritmo es $O( |C| \cdot l^2) $ y la complejidad espacial auxiliar es $O(l^2) $.
+La complejidad temporal de algoritmo es $O( |C|\ l^2) $ y la complejidad espacial auxiliar es $O(l^2) $.
 
 #### d) Supongamos que se ordenan los elementos de $C$ en un vector cortes y se agrega un $0$ al principio y un $ℓ$ al final. Luego, se considera que el mínimo costo para cortar desde el $i-ésimo$ punto de corte en cortes hasta el $j-ésimo$ punto de corte será el resultado buscado si $i = 1$ y $j = |C| + 2$.
