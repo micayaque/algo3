@@ -7,10 +7,18 @@ Piense cómo reutilizar los resultados ya calculados.
 Justifique la complejidad del algoritmo dado.
 
 ```math
-a^b = a^{\frac{b}{2}} * a^{\frac{b}{2}} \\
-a^{\frac{b}{2}} = a^{\frac{b}{4}} * a^{\frac{b}{4}} \\
-a^{\frac{b}{4}} = a^{\frac{b}{8}} * a^{\frac{b}{8}} \\
-... \\
+a^b = a^{\frac{b}{2}} * a^{\frac{b}{2}}
+```
+```math
+a^{\frac{b}{2}} = a^{\frac{b}{4}} * a^{\frac{b}{4}}
+```
+```math
+a^{\frac{b}{4}} = a^{\frac{b}{8}} * a^{\frac{b}{8}}
+```
+```math
+...
+```
+```math
 a^{\frac{b}{b}} = a
 ```
 Podemos dividir $b$ por 2 en cada llamada recursiva para lograr el tiempo logarítmico.
