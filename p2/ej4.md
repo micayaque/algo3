@@ -20,18 +20,54 @@ ComplexityQuest
 ---
 Calcule la complejidad de un algoritmo que utiliza $T(n)$ pasos para una entrada de tamaño $n$, donde $T$ cumple:
 
-$1) T (n) = T (n − 2) + 5 \\
-T(n-2) = T(n-4) + 5 \\
-T(n-4) = T(n-6) + 5 \\
-\dots \\
+### $1) T (n) = T (n − 2) + 5$
+
+```math
+T(n-2) = T(n-4) + 5 
+```
+```math
+T(n-4) = T(n-6) + 5
+```
+```math
+\dots 
+```
+```math
 T(2) = T(0) + 5 \\
-T(0) = c \\
+```
+```math
+T(0) = c
+```
+```math
 T(n) = T(n - 2k) + 5
-$
+```
+```math
+n-2k = 0 \Rightarrow k = \frac{n}{2}
+```
+---
+```math
+T(0) = c
+```
+```math
+T(2) = T(0) + 5 = c + 5
+```
+```math
+T(4) = T(2) + 5 = c + 5 + 5 
+```
+```math
+T(6) = T(4) + 5 = c + 5 + 5 + 5 
+```
+```math
+\dots
+```
+```math
+\color{lime}T(n) = c + \frac{n}{2}*5 = O(c + \frac{5n}{2}) = O(n)
+```
 
 $2) T (n) = T (n − 1) + n$
 
 $3) T (n) = T (n − 1) + \sqrt{n}$
+
+
 
 $4) T (n) = T (n − 1) + n^2$
 
