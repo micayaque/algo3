@@ -110,25 +110,132 @@ T(n) = c + \frac{(n-1)((n-1)+1)}{2}
 ```
 ### $3) T (n) = T (n − 1) + \sqrt{n}$
 
+```math
+T (n-1) = T (n − 1 - 1) + \sqrt{n-1}
+```
+```math
+T (n-2) = T (n − 1 -2) + \sqrt{n-2}
+```
+```math
+T (n) = T (n − 1 -k) + \sqrt{n-k}
+```
+```math
+n − 1 -k = 0 \Rightarrow k = n - 1
+```
+```math
+T (0) = c
+```
+```math
+T (1) = T (0) + \sqrt{1} = c + 1
+```
+```math
+T (2) = T (1) + \sqrt{2} = c + \sqrt{1} + \sqrt{2}
+```
+```math
+T (3) = T (2) + \sqrt{3} = c + \sqrt{1} + \sqrt{2} + \sqrt{3}
+```
+```math
+\dots
+```
+```math
+T (n) = c + \sum_{i=1}^{k} \sqrt{i}
+```
+```math
+\color{lime}T (n) = c + \sum_{i=1}^{(n-1)} \sqrt{i} \leq \frac{2n^{\frac{3}{2}}}{3} = O(n^{\frac{3}{2}})
+```
 
+### $4) T (n) = T (n − 1) + n^2$
+```math
+T (n) = T (n − 1) + n^2
+```
+```math
+T (n-1) = T (n − 1 -1) + (n-1)^2
+```
+```math
+T (n-2) = T (n − 1 -2) + (n-2)^2
+```
+```math
+T (n-3) = T (n − 1 -3) + (n-3)^2
+```
+```math
+\dots
+```
+```math
+T(n) = T(n - 1 - k) + (n - k)^2
+```
+```math
+n - 1 - k = 0 \Rightarrow k = n - 1
+```
+```math
+T(0) = c
+```
+```math
+T(1) = T(0) + 1^2 = c + 1^2
+```
+```math
+T(2) = T(1) + 2^2 = c + 1^2 + 2^2
+```
+```math
+T(3) = T(2) + 3^2 = c + 1^2 + 2^2 + 3^2
+```
 
-$4) T (n) = T (n − 1) + n^2$
+```math
+T(n) = c + \sum_{i=1}^{k} i^2
+```
+```math
+T(n) = c + \frac{k(k+1)(2k+1)}{6}
+```
+```math
+\color{lime}T(n) = c + \frac{(n-1)(n-1+1)(2(n-1)+1)}{6} = c + \frac{n(n-1)(2n-1)}{6} = O(n^3)
+```
 
 $5) T (n) = 2T (n − 1)$
 
+```math
+\dots
+```
+
 $6) T (n) = T (\frac{n}{2}) + n$
+
+```math
+\dots
+```
 
 $7) T (n) = T (\frac{n}{2}) + \sqrt{n}$
 
+```math
+\dots
+```
+
 $8) T (n) = T (\frac{n}{2}) + n^2$
+
+```math
+\dots
+```
 
 $9) T (n) = 2T (n − 4)$
 
+```math
+\dots
+```
+
 $10) T (n) = 2T (\frac{n}{2}) + log n$
+
+```math
+\dots
+```
 
 $11) T (n) = 3T (\frac{n}{4})$
 
+```math
+\dots
+```
+
 $12) T (n) = 3T (\frac{n}{4}) + n$
+
+```math
+\dots
+```
 
 Intentar estimar la complejidad para cada ítem directamente y luego calcularla utilizando el teorema maestro de ser posible. 
 
