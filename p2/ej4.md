@@ -63,9 +63,57 @@ T(6) = T(4) + 5 = c + 5 + 5 + 5
 \color{lime}T(n) = c + \frac{n}{2}*5 = O(c + \frac{5n}{2}) = O(n)
 ```
 
-$2) T (n) = T (n − 1) + n$
+### $2) T (n) = T (n − 1) + n$
 
-$3) T (n) = T (n − 1) + \sqrt{n}$
+```math
+T (n-1) = T (n − 1 - 1) + n - 1
+```
+```math
+T (n-2) = T (n − 1-2) + n - 2
+```
+```math
+T (n-3) = T (n − 1-3) + n - 3
+```
+```math
+\dots
+```
+```math
+T (1) = T (0) + 1
+```
+```math
+T (0) = c
+```
+```math
+T (n) = T (n - 1 - k) + n - k
+``` 
+```math
+n - 1 - k = 0 \Rightarrow k = n - 1
+```
+```math
+T(0) = c
+```
+```math
+T(1) = T(0) + 1 = c + 1
+```
+```math
+T(2) = T(1) + 2 = c + 1 + 2
+```
+```math
+T(3) = T(2) + 3 = c + 1 + 2 + 3
+```
+```math
+\dots
+```
+```math
+T(n) = c + \frac{k(k+1)}{2} 
+```
+```math
+T(n) = c + \frac{(n-1)((n-1)+1)}{2} 
+```
+```math
+\color{lime}T(n) = c + \frac{(n-1)n}{2} = O(n^2)
+```
+### $3) T (n) = T (n − 1) + \sqrt{n}$
 
 
 
