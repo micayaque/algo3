@@ -32,12 +32,6 @@ T(n-4) = T(n-6) + 5
 \dots 
 ```
 ```math
-T(2) = T(0) + 5 \\
-```
-```math
-T(0) = c
-```
-```math
 T(n) = T(n - 2k) + 5
 ```
 ```math
@@ -89,6 +83,7 @@ T (n) = T (n - 1 - k) + n - k
 ```math
 n - 1 - k = 0 \Rightarrow k = n - 1
 ```
+---
 ```math
 T(0) = c
 ```
