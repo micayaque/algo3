@@ -11,13 +11,35 @@ un algoritmo que permita calcular
 
 Procure que el algoritmo propuesto aplique el método $\text{potencia}$, sume y haga productos de matrices una cantidad estrictamente menor que $\text{O(n)}$ veces.
 
+Propiedades sobre la multiplicación de matrices y sus potencias:
+
+$(1)\ A(B + C) = AB + AC$
+
+$(2)\ A^i × A^j = A^{i+j}$
+
 ```math
 \color{violet}A^1 + A^2 + A^3 + . . . + A^n = A^1 + A^2 + A^3 + . . . + A^{\frac{n}{2}} + A^{\frac{n}{2}+1} + . . . + A^n
 ```
+Usando las propiedades $(1)$ y $(2)$:
+```math
+A^{\frac{n}{2}} + A^{\frac{n}{2}+1} + . . . + A^n = A^{\frac{n}{2}} * (A^1 + A^2 + A^3 + . . . + A^{\frac{n}{2}})
+```
+Por lo tanto:
+```math
+\color{violet}A^1 + A^2 + A^3 + . . . + A^n = A^1 + A^2 + A^3 + . . . + A^{\frac{n}{2}} + A^{\frac{n}{2}} * (A^1 + A^2 + A^3 + . . . + A^{\frac{n}{2}})
+```
 
 ```C++
-CONSULTAR ?????????
+#include <armadillo>
+using namespace arma;
 
-vector<vector<int>> potencia_sum(vector<vector<int>> matriz, int n) {
+mat potencia_sum(mat A, int n) {
+    if (n == 1) return A;
+    
+    mat mitad_izq = potencia_sum(A, n / 2);
+
+    mat A_n_2 = potencia(A, n/2);
+
+    return mitad_izq + (A_n_2 * mitad_izq);
 }
 ```
