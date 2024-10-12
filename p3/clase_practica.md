@@ -136,13 +136,13 @@ Como Santi está muy cansado con tantos trabajos, nos pidió que, dada la lista 
 
 Sea $G = (V , E )$ y $S = \{s_1 , . . . , s_k \}$ donde $s_i \in V$
 
-![alt text](image-2.png)
+![alt text](/img/image12.png)
 
 Complejidad matriz de adyacencia: $O(nk)$
 
 Complejidad lista de adyacencia: $O(nd_m k)$
 
-![alt text](image-3.png)
+![alt text](/img/image13.png)
 
 Complejidad lista de adyacencia: $O(n + m)$
 
