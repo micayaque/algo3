@@ -50,5 +50,5 @@ Una arista está formada por un nodo $s$ y un nodo $t$ y de esta forma $d(u)$ y 
 \sum_{v\in V(D)}^{} d_{in}(v) = \sum_{v\in V(D)}^{} d_{out}(v) = k
 ```
 
-Vale por hipótesis inductiva. $\blacksquare$
+Vale por hipótesis inductiva. $\square$
 
