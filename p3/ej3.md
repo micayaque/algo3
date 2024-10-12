@@ -33,7 +33,7 @@ Para que todos los grados de salida de cada vértice sean distintos, podemos asi
 
 Es así como construimos un grafo orientado asegurando que cada vértice tenga un grado de salida distinto.
 
-Absurdo: Si hubieran dos grafos orientados distintos $o$ y $o'$ con todos sus vértices con grados de salida distintos, eso implica que podemos cambiar una de las asignaciones en nuestro grafo orientado que construimos y formar el grafo $o'$.
+Absurdo: Si hubieran dos grafos orientados distintos $g$ y $g'$ con todos sus vértices con grados de salida distintos, eso implica que podemos cambiar una de las asignaciones en nuestro grafo orientado que construimos y formar el grafo $g'$.
 
 Podemos ver que si cambiaramos alguna de las asignaciones de los grados de salida de los vértices, tendríamos un vértice con grado de salida repetido.
 
