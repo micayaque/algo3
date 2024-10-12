@@ -27,5 +27,5 @@ En ambos casos tenemos $n-1$ posibles grados para $n$ vértices.
 
 Si intentamos asignar un grado único a cada uno de los $n$ vértices usando solo $n-1$ opciones, inevitablemente tendremos que repetir al menos uno de los grados, lo que contradice nuestra suposición inicial de que todos los vértices tienen grados diferentes.
 
-Por lo tanto, nuestra suposición inicial debe ser falsa, y debe existir al menos un par de vértices con el mismo grado en todo grafo no trivial. $\blacksquare$
+Por lo tanto, nuestra suposición inicial debe ser falsa, y debe existir al menos un par de vértices con el mismo grado en todo grafo no trivial. $\square$
 
