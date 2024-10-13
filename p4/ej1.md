@@ -123,7 +123,7 @@ pair<bool, vector<int>> es_bipartito(const vector<vector<int>>& G) {
     vector<int> predecesor(n, -1);
     set<int> V, W;
 
-    for (int v = 0; v < n; ++v) {
+    for (int v = 0; v < n; v++) {
         if (colores[v] == -1) {  // si no ha sido visitado
             if (!dfs(v, 0, colores, G, predecesor, V, W)) {
                 return {false, ciclo};
@@ -134,3 +134,7 @@ pair<bool, vector<int>> es_bipartito(const vector<vector<int>>& G) {
     return {true, vector<int>{}};
 }
 ```
+
+#### d) Generalizar el algoritmo del inciso anterior a grafos no necesariamente conexos observando que un grafo $\text{G}$ es bipartito si y solo si sus componentes conexas son bipartitas.
+
+(Lo hace el `for` de la función `es_bipartito`)
