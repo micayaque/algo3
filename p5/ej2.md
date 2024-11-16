@@ -62,3 +62,8 @@ int findMaxEdgeInPath(vector<vector<Edge>>& graph, int s, int t, int c) {
     return (maxEdgeWeight == -1) ? -1 : maxEdgeWeight;
 }
 ```
+
+**Invariante**: Durante la ejecución, el algoritmo mantiene un registro de la arista de peso máximo en todos los caminos explorados que cumplen la cota $c$. La condición de actualización garantiza que cada arista en los caminos es evaluada correctamente y que el camino considerado cumple la restricción de peso total.
+
+El algoritmo termina cuando se han procesado todos los caminos posibles desde $s$ a $t$ con peso a lo sumo $c$. Como el algoritmo usa una cola de prioridad, cada nodo se explora de forma eficiente y se evita visitar nodos más costosos de lo necesario.
+
