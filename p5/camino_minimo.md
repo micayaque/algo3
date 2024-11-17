@@ -194,3 +194,141 @@ Lo vamos a probar viendo que $min({\color{cyan}P_{con}}) \geq min({\color{violet
 
 $\Rightarrow$ Solución = algoritmo.
 
+### Joaquı́n y los Monstruos
+
+Joaquı́n estaba aburrido en la clase de TDA, ası́ que se puso a programar un juego. 
+
+Quiere hacer que el jugador pase por distintos
+mundos pasando por portales unidireccionales, matando los monstruos de los mundos por los que pasa. 
+
+Cada portal $i$ por el que logra pasar le da $p_i \in R$ puntos. 
+
+El objetivo del juego es llegar desde el mundo $m_1$ hasta el mundo $m_n$ con la mayor cantidad de puntos posible.
+
+A Joaco le preocupa que el juego esté balanceado, ası́ que quiere saber cuál es la máxima cantidad de puntos que puede generar un
+jugador dada la cantidad de mundos, los portales que hay, y cuántos puntos da cada portal. 
+
+Además, quiere saber cuál es la mı́nima cantidad de portales que podrı́a estar tomando el jugador que hiciese la máxima cantidad de puntos posible.
+
+Resolución Puntaje Máximo
+
+Empecemos con el modelado:
+
+Tenemos mundos que se conectan entre otros a través de portales, donde cada portal tiene un puntaje asignado ¿Cómo podemos modelar el problema?
+
+Armamos un digrafo $G$ donde los nodos son los mundos, los ejes dirigidos los portales que llevan de un mundo a otro, y los
+pesos de las aristas son el puntaje del portal.
+
+Algunas consideraciones:
+
+¿Qué serı́a una partida desde el punto de vista del grafo? Un recorrido $R$ que empieza desde el nodo $m_1$ y termina en el $m_n$.
+
+Para el resto del problema asumamos que no hay ejes salientes de $m_n$ (¿Por qué es esto válido?).
+
+¿Hay alguna cota para el máximo puntaje? Depende de si existe un ciclo $C$ de longitud positiva alcanzable por $m_1$ y que luego alcanza $m_n$. Lo tenemos que demostrar.
+
+La puntuación máxima de las partidas no está acotada $\Leftrightarrow$ existe un ciclo $C$ de longitud positiva alcanzable por $m_1$ que luego alcanza $m_n$.
+
+$\Leftarrow)$
+
+Si existe un ciclo $C$ de longitud positiva alcanzable por $m_1$ que luego alcanza $m_n$, entonces un jugador podría partir de $m_1$, y tomar el ciclo tantas veces como quiera para luego ir a $m_n$ y terminar el juego. 
+
+Por lo tanto, podría llegar con un puntaje arbitrariamente grande, y la puntuación no estaría acotada.
+
+$\Rightarrow)$
+
+Sabemos que la puntuación máxima no está acotada, o sea, para todo $s \in N$ existe un recorrido entre $m_1$ y $m_n$ cuya puntuación es mayor a $s$. 
+
+Tomemos un $s$ gigante tal que no haya camino
+simple que pueda sumar eso. 
+
+Por ejemplo, tomemos que $s$ es la suma de todas las aristas positivas del digrafo. 
+
+Como cada arista no puede aparecer más de una vez en un camino, es claro que ningún camino puede puntuar más que $s$. 
+
+Por lo tanto, todo recorrido $R$ que puntúe más que $s$ repetirá alguna arista. 
+
+Con esto es suficiente para decir que $R$, siendo un recorrido cualquiera que puntúe más que $S$, tiene un ciclo (¿Por qué?).
+
+Supongamos que $R$ no contiene ningún ciclo positivo. Es decir, todos los ciclos que contiene suman algo negativo o $0$. 
+
+Cada ciclo $C$ adentro de $R$ comenzará y terminará en el mismo vértice, digamos $v$. 
+
+Podemos entonces tomar como $R'$ el resultado de eliminar el ciclo $C$ de $R$, y $R'$ será
+un recorrido válido. 
+
+Como $R$ debe tener una cantidad finita de ciclos, y eliminar un ciclo de un recorrido no genera nuevos ciclos, si realizamos esta operación hasta no poder más, el resultado
+será un camino. 
+
+Además, como ningún ciclo es positivo, eliminar cada ciclo de $R$ resulta en una
+puntuación mayor o igual a la anterior. 
+
+Al final, entonces, tendremos un camino con puntuación mayor o igual a la de $R$. 
+
+Pero $R$ tenía una puntuación mayor a $s$, y por lo tanto el camino también la tendrá. ABSURDO! , ya que dijimos antes que ningún camino podría tener puntaje mayor a $s$. ¿Y dónde está lo que supusimos que nos llevó a la contradicción? Está en que dijimos que $R$ no tenía ningún ciclo positivo. 
+
+Por lo tanto, $R$ sí tiene un ciclo positivo. Además, este ciclo positivo es alcanzable desde $m_1$ y alcanza $m_n$, porque hay un recorrido $R$ que va de $m_1$ a $m_n$ que lo alcanza. 
+
+Finalmente, el ciclo pertenece al digrafo, y entonces llegamos al consecuente.
+
+¿Cómo podemos hacer ahora para resolver un problema de recorrido máximo?
+
+¡Si multiplicamos todos los pesos por -1 lo convertimos en un problema de recorrido mı́nimo!
+
+Además los ”ciclos positivos” pasan a ser ciclos negativos.
+
+¿Esto ya se parece más a un problema que podemos resolver, no?
+
+No del todo, porque a nosotros solo nos importan los ciclos negativos que están en medio de un recorrido de $m_1$ a $m_n$, y
+no sabemos cómo detectar solamente estos casos.
+
+¿Cómo lo podemos solucionar? Necesitamos olvidarnos la parte de que los ciclos “alcancen a $m_n$”, para ello lo que podemos hacer es borrar todos los nodos
+que no alcazan a $m_n$ y ya. (¿Por qué?)
+
+Para ello alcanza con correr DFS desde $m_n$ en $G_t$ para ver que nodos no son alcanzables y eliminarlos.
+
+Ahora sı́, definamos cómo quedarı́a el algoritmo:
+1. Armamos el modelo.
+2. Multiplicamos los pesos de las aristas por -1.
+3. Eliminamos todos los nodos que no llegan a $m_n$ mediante DFS.
+4. Ejecutamos Bellman-Ford desde $m_1$, y devolvemos infinito si encuentra un ciclo, y sino el opuesto del valor del recorrido
+mı́nimo entre $m_1$ y $m_n$.
+
+Pasemos ahora a la segunda parte del problema. 
+
+Queremos saber cuál es la mínima cantidad de
+portales que podría estar tomando el jugador que hiciese la máxima cantidad de puntos posible. Esta pregunta solo tiene sentido en el caso en el que no hubiera ciclos de puntaje positivo en algún camino entre $m_1$ y $m_n$, ya que sino no existiría tal puntaje máximo.
+
+Para ello nos sería muy útil tener una noción de cuáles son todos los caminos posibles de puntaje máximo, y luego quedarnos con el más corto de todos ellos. ¿Cómo podemos conseguir algo así?
+
+Lo que podemos hacer es obtener el “DAG de caminos mínimos” del grafo que representa nuestro problema. 
+
+Esto es, un digrafo acíclico que contenga solamente las aristas que pertenezcan a algún
+camino mínimo desde un nodo $s$ a un nodo $t$. En este caso nos interesaría el DAG de camino mínimo de $m_1$ a $m_n$.
+
+¿Cómo lo conseguimos? Lo que podemos hacer es lo siguiente:
+
+1. Corremos Bellman-Ford desde $m_1$ y obtenemos la distancia mínima de $m_1$ a todos los nodos, y nos la guardamos en un vector `DistanciaAm1`.
+2. Corremos Bellman-Ford desde $m_n$ en $G_t$ (el grafo traspuesto) y obtenemos la distancia
+mínima de todos los nodos a $m_n$, y nos la guardamos en un vector `DistanciaAmn`.
+3. Armamos un DAG con los mismos nodos de $G$ pero (todavía) sin aristas.
+4. Luego, para cada arista $(u, v) \in E$ Si $DistanciaA_{m_1} [u] + peso(u,v) + DistanciaA_{m_n} [v] = DistanciaA_{m_1} [m_n ]$, quiere decir que $(u, v)$ pertenece a un camino mínmo de $m_1$ a $m_n$ y por ende la agrego al DAG.
+
+Observación: en este caso, como estamos asumiendo que no hay ciclos negativos, en lugar de Bellman-Ford también podríamos usar un algoritmo basado en DAGs (Correr topological sort, y relajar las aristas en ese orden).
+
+¿Cómo hacemos para saber ahora el largo mínimo de un camino máximo? Como ya lo veníamos haciendo: simplemente corremos BFS desde $m_1$ en el DAG, y nos fijamos la altura a la que quedó $m_n$.
+
+### Demostración
+
+Una arista está en el DAG que construimos $\Leftrightarrow$ pertenecía a un camino mínimo de $G$.
+
+$\Rightarrow)$
+
+Si una arista $(u, v)$ está en el DAG es porque $DistanciaA_{m_1} [u] + peso(u,v) + DistanciaA_{m_n} [v] = DistanciaA_{m_1} [m_n]$. Con lo cual existe un camino $R$ de la forma $m_1 \to · · · \to u \to v \to · · · \to m_n$ cuyo peso es $DistanciaA_{m_1} [m_n]$, es decir que $(u, v)$ pertenece a un camino mínimo, siendo $R$ ese camino.
+
+$\Leftarrow$
+
+Si $(u, v)$ pertenece a un camino mínimo, entonces vale $DistanciaA_{m_1} [u] + peso(u,v) + DistanciaA_{m_n} [v] = DistanciaA_{m_1} [m_n]$, y por lo tanto el algoritmo la incluyó en el DAG.
+
+Luego, el DAG efectivamente incluyó todas y solo las aristas que pertenecen a un camino
+mínimo de $m_1$ a $m_n$. Y al hacer BFS en el DAG desde $m_1$, por BFS, mn va a tener la mínima distancia posible en el DAG a $m_1$, y por ende esa es la mínima distnacia posible con un camino mínimo.
