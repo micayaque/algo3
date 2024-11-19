@@ -76,7 +76,7 @@ $O(\text{iteraciones}) \cdot O(\text{BFS}) = O(qn) \cdot O(m)$
 Dado que $m \leq n^2$:
 $$O(qnm)$$
 
-* El término $q$ controla el límite superior del flujo máximo, ya que cada arista tiene capacidad a lo sumo $q$. Si $q \ll n$, este límite superior implica que la complejidad total será mucho menor que en el caso general ($O(nm^2)$).
+* El término $q$ controla el límite superior del flujo máximo, ya que cada arista tiene capacidad a lo sumo $q$. Si $q \ll n$, este límite superior implica que la complejidad total será mucho menor que en el caso general $(O(nm^2))$.
 
 > $c)$ el flujo máximo de $N$ tiene un valor $F ≪ mn$.
 
