@@ -4,7 +4,7 @@ Un **corte mínimo** en una red de flujo $N$ es una partición del conjunto de n
 
 * La fuente $s \in S$.
 * El sumidero $t \in T$.
-* La **capacidad del corte** ($c(S, T)$) es la suma de las capacidades de las aristas que van de $S$ a $T$:
+* La **capacidad del corte** $(c(S, T))$ es la suma de las capacidades de las aristas que van de $S$ a $T$:
 $$c(S, T) = \sum_{u \in S, v \in T} c(u, v)$$
 
 Un **corte mínimo** es aquel con la capacidad mínima entre todos los posibles cortes.
@@ -47,11 +47,11 @@ $$c(S, T) = \sum_{u \in S, v \in T} c(u, v)$$
 
 ### **Complejidad**
 
-- Recorrer todas las aristas ($(m)$) para calcular $r(u, v)$.
+- Recorrer todas las aristas $(O(m))$ para calcular $r(u, v)$.
 
-- Realizar un BFS o DFS ($O(m)$).
+- Realizar un BFS o DFS$(O(m))$.
 
-- Verificar todas las aristas $(u, v)$ en la red original ($O(m)$).
+- Verificar todas las aristas $(u, v)$ en la red original $(O(m))$.
 
 **Complejidad total**:  
 $$O(m)$$ 
