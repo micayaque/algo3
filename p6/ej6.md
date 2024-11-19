@@ -41,7 +41,7 @@ Queremos maximizar el flujo desde $s$ a $t$, que corresponde al número máximo 
 
 Cada unidad de flujo representa a un soltero que es asignado de una familia $f_i$ a una mesa $m_j$.
 
-$c_{ij}$$ asegura que no se sienten más de $c_{ij}$ solteros de la familia $f_i$ en la mesa $m_j$.
+$c_{ij}$ asegura que no se sienten más de $c_{ij}$ solteros de la familia $f_i$ en la mesa $m_j$.
 
 $s \to f_i$ garantiza que una familia no envíe más solteros de los que tiene disponibles.
 
