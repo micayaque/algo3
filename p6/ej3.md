@@ -97,6 +97,6 @@ El algoritmo de Edmonds-Karp es una implementación específica del algoritmo de
 En cada iteración, BFS tiene una complejidad de $O(m)$, donde $m$ es el número de aristas. Se puede demostrar que el algoritmo realiza a lo sumo $O(nm)$ iteraciones, donde $n$ es el número de nodos.
 
 **Complejidad total:**  
-$$ O(nm^2)$$
+$$O(nm^2)$$
 
 Esto es porque cada camino aumentante reduce la capacidad residual de alguna arista saturada en la red residual, lo que garantiza que el número total de iteraciones sea acotado por $O(nm)$.
