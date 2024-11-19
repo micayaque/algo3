@@ -49,7 +49,7 @@ $$c(S, T) = \sum_{u \in S, v \in T} c(u, v)$$
 
 - Recorrer todas las aristas $(O(m))$ para calcular $r(u, v)$.
 
-- Realizar un BFS o DFS$(O(m))$.
+- Realizar un BFS o DFS $(O(m))$.
 
 - Verificar todas las aristas $(u, v)$ en la red original $(O(m))$.
 
